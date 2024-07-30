@@ -1,2 +1,4 @@
 # dani-camp
-Created to give projects follow ups
+> Project Follow up repository
+
+None of the initial docs are to be considered final presentation :V
