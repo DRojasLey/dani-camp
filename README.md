@@ -3,5 +3,5 @@
 
 See projects:   
     
-    [Project 1: Shiritori](projects/project1/)
+[Shiritori](projects/project1/)
 
