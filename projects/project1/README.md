@@ -11,8 +11,10 @@ Shiritori is a Japanese game in which you take the last letter of your opponent 
 - Only words that are longer than 6 letters count
 - Only words which start with the last letter of the previous word are valid
 - You have only 3 lives 'YOL3T'; you lose a live by:
+
 		* providing words that are not 7 letters long at least
 		* providing words that don't start with the last letter of the previous word
+		
 - The idea is to have as much words as possible in the end.
 
 
