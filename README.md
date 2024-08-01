@@ -3,5 +3,5 @@
 
 See projects:   
     
-[Shiritori](projects/project1/)
+[Shiritori](projects/project1/README.md)
 
