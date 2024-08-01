@@ -10,8 +10,10 @@ Shiritori is a Japanese game in which you take the last letter of your opponent 
 
 - Only words that are longer than 6 letters count
 - Only words which start with the last letter of the previous word are valid
-- You have only 3 lives 'YOL3T'
-- The idea is to have as much as words as possible in the end.
+- You have only 3 lives 'YOL3T'; you lose a live by:
+		* providing words that are not 7 letters long at least
+		* providing words that don't start with the last letter of the previous word
+- The idea is to have as much words as possible in the end.
 
 
 
@@ -49,15 +51,15 @@ Shiritori is a Japanese game in which you take the last letter of your opponent 
  	- declare randomWord as string = empty string here ;
 
 
-- define function outputWords(prevLetter){
+- define function outputWords(prevWLetter){
    	  	If (randonWord === empty string){
-			randomWord = wordsDictionary[Math.floor(Math.random() * wordsDictionary.length)];
+			randomWord = dictionary[Math.floor(Math.random() * dictionary.length)];
 			return randomWord;
 		} else {
 			do {
-				randomWord = wordsDictionary[Math.floor(Math.random() * wordsDictionary.length)]; // get a random word from the dictionry withinm the length of the dictionary
+				randomWord = dictionary[Math.floor(Math.random() * dictionary.length)]; // get a random word from the dictionry withinm the length of the dictionary
 			} while {
-				prevLetter !== first char at randomWord // While section continues returning  words from the dictionary until one matches the last letter of the prevWord
+				prevWLetter !== first char at randomWord // While section continues returning  words from the dictionary until one matches the last letter of the prevWord
 			}
 			return randomWord;
    	  	}
@@ -77,7 +79,7 @@ Shiritori is a Japanese game in which you take the last letter of your opponent 
  		} else {
 			push userWord to userFails;				//userFails element count is also used as fail counter
  		}	
- 		return prevLetter = last char at userWord ;
+ 		return prevWLetter = last char at userWord ;
    	  }
    	  
    	- define function actualGame() {
@@ -89,9 +91,9 @@ Shiritori is a Japanese game in which you take the last letter of your opponent 
 		 
 			 userWord = prompt 'give a word that starts with the last letter of the previous word ';
 
-			 prevLetter = processWord(userWord);
+			 prevWLetter = processWord(userWord);
 
-			 randomWord = outputWords(prevLetter);
+			 randomWord = outputWords(prevWLetter);
 		
 		} while { userFails.length <= 3 }
 
