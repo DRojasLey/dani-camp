@@ -1,4 +1,7 @@
-# dani-camp
-> Project Follow up repository
+# Dani-Camp 
+### Learning with help of Daniel Trujillo
 
-None of the initial docs are to be considered final presentation :V
+See projects:   
+    
+    [Project 1: Shiritori](projects/project1/)
+
