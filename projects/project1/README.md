@@ -54,37 +54,41 @@ Shiritori is a Japanese game in which you take the last letter of your opponent 
  	- declare randomWord as string = empty string here ;
 
 
-- define function outputWords(prevWLetter){
-   	  	If (randonWord === empty string){
+- define function randomWordGenerator(lastLetter){
+   	  	If (lastLetter === empty string){
 			randomWord = dictionary[Math.floor(Math.random() * dictionary.length)];
 			return randomWord;
 		} else {
 			do {
 				randomWord = dictionary[Math.floor(Math.random() * dictionary.length)]; // get a random word from the dictionry within the length of the dictionary
-			} while {
-				prevWLetter !== first char at randomWord // While section continues returning  words from the dictionary until one matches the last letter of the prevWord
-			}
+			} while (lastLetter !== first char at randomWord  || lastLetter == true)
+			// While section continues returning  words from the dictionary until one matches the last letter of the prevWord
+			
 			return randomWord;
    	  	}
    	  }
+```
+#### This is an old version of the wordProcessor() function, it will be updated 
 
 
- 	- define function processWord(userWord) {			// we cannot trust user input, but at the moment I do not have the capability to do real word checkup :sadge:
- 		userWord = toLowerCase(userWord);
-		if (userWord.length > 6 ){	
-			if (first letter of the userWord === last letter previous random word){
-				push userWord to dictionary;
-				push userWord to userRecap;
+ 	- define function wordProcessor(userInput) {			// we cannot trust user input, but at the moment I do not have the capability to do real word checkup :sadge:
+ 		userInput = toLowerCase(userWord);
+		if (userInput.length > 6 ){	
+			if (first letter of the userInput === last letter previous random word){
+				push userInput to dictionary;
+				push userInput to userRecap;
 			} else {
-				push userWord to userFails;
+				push userInput to userFails;
 			}
  			
  		} else {
-			push userWord to userFails;				//userFails element count is also used as fail counter
+			push userInput to userFails;				//userFails element count is also used as fail counter
  		}	
- 		return prevWLetter = last char at userWord ;
+ 		return prevWLetter = last char at userInput ;
    	  }
-   	  
+
+
+```
    	- define function actualGame() {
    	 	 randomWord = outputWords();
 		 
