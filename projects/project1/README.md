@@ -64,7 +64,7 @@ Shiritori is a Japanese game in which you take the last letter of your opponent 
 			return randomWord;
 		} else {
 			do {
-				randomWord = dictionary[Math.floor(Math.random() * dictionary.length)]; // get a random word from the dictionry 
+				randomWord = dictionary[Math.floor(Math.random() * dictionary.length)]; // get a random word from the dictionry
 			} while (lastLetter !== first char at randomWord )
 			// While section continues returning  words from the dictionary until one matches the last letter of the prevWord
 			return randomWord;

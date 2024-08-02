@@ -59,35 +59,71 @@
 
         // main game function (for now? I mean I think if I add a menu it will need another function over this one :V)
 
+        const messages = {
+            machineTurn: (ourWord) => `My turn! my word is "${ourWord}", \n hit OK to introduce yours. \n (only letters no numbers nor symbols)`,
+            userTurn: () => `Introduce a word of 7 letters or more, \n using the last letter of my word.`,
+            lost1: () =>`You lost!`,
+            lost2: (userRecap) => `Your score is: ${userRecap.length === 0 ? '0' : userRecap.length}.`,
+            lost3: (userRecap) => `Your valid words were: ${userRecap.length === 0 ? 'no valid words' : userRecap}`,
+            lost4: (userFails, userWord) => `Your Invalid words were: ${userFails.length === 0 ? userWord : userFails}`,
+            wrongInput: (userWord) => `Your last Input was ${userWord} which is not a valid word`
+        }
+
         function actualGame(){
             let userWord = '';
             let ourWord = '';
             let prevWLetter ;
+
             ourWord = randomWordGenerator(''); // we initialize the game by assigning a random word to start?
+
             do{
-                alert(`My turn! my word is "${ourWord}", \n hit OK to introduce yours. \n (only letters no numbers nor symbols)`); 
-                userWord = prompt(`Introduce a word of 7 letters or more, \n using the last letter of my word.`);
+                alert(messages.machineTurn(ourWord));
+                userWord = prompt(messages.userTurn());
                 prevWLetter = wordProcessor(userWord);
-                console.log(`Current prevWLetter status is ${prevWLetter}.`);// debugging console status
                 if (prevWLetter){
                     ourWord = randomWordGenerator(prevWLetter);
                 }
             } while (userFails.length < 3 && prevWLetter);
 
             if (!prevWLetter) {
-                alert(`Your last Input was ${userWord} which is not a valid word`);
+                alert(messages.wrongInput(userWord));
             }
 
-            alert(`You lost!`);
-            alert(`Your score is: ${userRecap.length}.`);
-            alert(`Your valid words were: ${userRecap}`);
-            alert(`Your Invalid words were: ${userFails}`);
+            alert(messages.lost1());
+            alert(messages.lost2(userRecap));
+            alert(messages.lost3(userRecap));
+            alert(messages.lost4(userFails, userWord));
         }
 
-        // Place holder for a potential menu function
+
+        // function actualGame(){
+        //     let userWord = '';
+        //     let ourWord = '';
+        //     let prevWLetter ;
+        //     ourWord = randomWordGenerator(''); // we initialize the game by assigning a random word to start?
+        //     do{
+        //         alert(`My turn! my word is "${ourWord}", \n hit OK to introduce yours. \n (only letters no numbers nor symbols)`); 
+        //         userWord = prompt(`Introduce a word of 7 letters or more, \n using the last letter of my word.`);
+        //         prevWLetter = wordProcessor(userWord);
+        //         console.log(`Current prevWLetter status is ${prevWLetter}.`);// debugging console status
+        //         if (prevWLetter){
+        //             ourWord = randomWordGenerator(prevWLetter);
+        //         }
+        //     } while (userFails.length < 3 && prevWLetter);
+
+        //     if (!prevWLetter) {
+        //         alert(`Your last Input was ${userWord} which is not a valid word`);
+        //     }
+
+        //     alert(`You lost!`);
+        //     alert(`Your score is: ${userRecap.length === 0 ? '0' : userRecap.length}.`);
+        //     alert(`Your valid words were: ${userRecap.length === 0 ? 'no valid words' : userRecap}`);
+        //     alert(`Your Invalid words were: ${userFails.length === 0 ? userWord : userFails}`);
+        // }
+
+        // // Place holder for a potential menu function
 
         actualGame();
     </script>
-
 </body>
 </html>
