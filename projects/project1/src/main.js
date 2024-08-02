@@ -1,6 +1,5 @@
  // main file for the actual Js code of the game
-
-        //We will add the dictionary in this section, I will not add it yet to avoid all that clutter, we will use for now a small array
+        //The dictionary array is called using the window method
         let randomWord = '';
         let userFails = [];
         let userRecap = [];

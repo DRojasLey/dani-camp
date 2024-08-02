@@ -38,7 +38,6 @@
 
         function wordProcessor(userInput){
             if (isOnlyLetter(userInput)){
-                console.log('si si');
                 userInput = userInput.toLowerCase()
                 if (userInput.length > 6){
                     if (userInput.charAt(0) === randomWord.charAt(randomWord.length-1)){    // checks if the character at 0 of the user word  is equal to the last character of the random word
@@ -69,7 +68,7 @@
                 alert(`My turn! my word is "${ourWord}", \n hit OK to introduce yours. \n (only letters no numbers nor symbols)`); 
                 userWord = prompt(`Introduce a word of 7 letters or more, \n using the last letter of my word.`);
                 prevWLetter = wordProcessor(userWord);
-                console.log(`Current prevWLetter status is ${prevWLetter}.`);
+                console.log(`Current prevWLetter status is ${prevWLetter}.`);// debugging console status
                 if (prevWLetter){
                     ourWord = randomWordGenerator(prevWLetter);
                 }

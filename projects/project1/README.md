@@ -14,8 +14,8 @@ Shiritori is a Japanese game in which you take the last letter of your opponent 
 
 		* providing words that are not 7 letters long at least
 		* providing words that don't start with the last letter of the previous word
-		* providing words that are not only letters
 
+- providing words that are not only letters will cause an immediate lost
 - The idea is to have as much words as possible in the end.
 
 
@@ -24,8 +24,9 @@ Shiritori is a Japanese game in which you take the last letter of your opponent 
 1. Generates a random word
 2. Alerts the user of the random word
 3. Ask for his word
-4. Processes the word 
-	- This ensures it is a valid lower case string
+4. Processes the word
+	- This ensures it is a valid input and lower cases the string
+	- If it's not valid input will return an exiting causing value
 	- Adds the word to the dictionary  << yes this somewhat learns new words!>>
 	- Adds the word to the score/recap array
 	- Returns the last letter of the user word
@@ -34,80 +35,95 @@ Shiritori is a Japanese game in which you take the last letter of your opponent 
 	- Gets a new word from the dictionary which first letter should match previous letter
 	- Returns the word
 6. Handles the score
+	- checks if the processed word is valid if not exits to point 7
 	- Check if the userFails array length is higher or equal to 3
-	- If it is lower returns to step 2 
+	- If it is lower returns to step 2
 	- Goes to the next step if it is higher
 7. Game over
-	- will alert of game over 
+	- If arriving from an incorrect value provided path will show the incorrect value
+	- alert it was not the correct type of value
+	- will alert of game over
 	- will show the count of correct words > score
 	- will show the provided words
 
 
-	
-## pseudo code? 
+
+## pseudo code?
 ### (or something I just made up so I could understand what the heck I am doing)
-```
- 	- declare dictionary as array;
- 	- declare userWord as string;
+```javascript
+
+ 	- import dictionary as array; // we do this now with the HTML file and window import
  	- declare userFails as array;
- 	- declare userRecap as array; //userRecap element count can be used as the score, we do not need to have a separate count 
+ 	- declare userRecap as array; //userRecap element count can be used as the score, we do not need to have a separate count
  	- declare randomWord as string = empty string here ;
 
 
 - define function randomWordGenerator(lastLetter){
    	  	If (lastLetter === empty string){
-			randomWord = dictionary[Math.floor(Math.random() * dictionary.length)];
+			randomWord = dictionary[Math.floor(Math.random() * dictionary.length)]; //random word from the array
 			return randomWord;
 		} else {
 			do {
-				randomWord = dictionary[Math.floor(Math.random() * dictionary.length)]; // get a random word from the dictionry within the length of the dictionary
-			} while (lastLetter !== first char at randomWord  || lastLetter == true)
+				randomWord = dictionary[Math.floor(Math.random() * dictionary.length)]; // get a random word from the dictionry 
+			} while (lastLetter !== first char at randomWord )
 			// While section continues returning  words from the dictionary until one matches the last letter of the prevWord
-			
 			return randomWord;
    	  	}
    	  }
-```
-#### This is an old version of the wordProcessor() function, it will be updated 
 
+	- define function isOnlyLetter(string){
+		if (string evaluated regex for alphabet){
+			return true;
+		} else {
+			return false;
+		}
+	}
 
- 	- define function wordProcessor(userInput) {			// we cannot trust user input, but at the moment I do not have the capability to do real word checkup :sadge:
- 		userInput = toLowerCase(userWord);
-		if (userInput.length > 6 ){	
-			if (first letter of the userInput === last letter previous random word){
-				push userInput to dictionary;
-				push userInput to userRecap;
-			} else {
-				push userInput to userFails;
+ 	- define function wordProcessor(userInput) { // user input cannot be trusted, right now I don't know how to do real word checkup :sadge:
+		if (isOnlyLetter(userInput)){
+ 			userInput = toLowerCase(userInput);
+			if (userInput.length > 6 ){
+				if ('first letter' of the userInput === last letter previous random word){
+					push userInput to dictionary;
+					push userInput to userRecap;
+				} else {
+					push userInput to userFails; // adds a fail to the life counter array
 			}
- 			
- 		} else {
-			push userInput to userFails;				//userFails element count is also used as fail counter
- 		}	
- 		return prevWLetter = last char at userInput ;
+ 			} else {
+				push userInput to userFails;	// adds a fail to the life counter array
+ 			}
+		} else {
+			return ''; //This returns a falsy statement of the same type String
+		}
+ 		return  last char at userInput ;
    	  }
 
+- define function actualGame() {
+	 	- declare userWord as string;
+		- declare ourWord as string;
+		- declare prevWLetter ;
 
-```
-   	- define function actualGame() {
-   	 	 randomWord = outputWords();
-		 
+   	 	 ourWord = randomWordGenerator('');// we initialize the game by assigning a random word to start?
 		 do {
 
-			 alert(randonWord);
-		 
-			 userWord = prompt 'give a word that starts with the last letter of the previous word ';
+            alert(`My turn! my word is ${ourWord}, hit OK to introduce yours.  (only letters no numbers nor symbols)`);
 
-			 prevWLetter = processWord(userWord);
+			userWord = prompt(`Introduce a word of 7 letters or more, \n using the last letter of my word.`);
+            prevWLetter = wordProcessor(userWord);
+			if(prevWLetter is truthy){
+				ourWord = randomWordGenerator(prevWLetter); // we only generate a new random word if the input is valid
+			}
+		} while { userFails.length <= 3 && prevWLetter is truthy }
 
-			 randomWord = outputWords(prevWLetter);
-		
-		} while { userFails.length <= 3 }
+		if (prevWLetter is falsy) {
+                alert(`Your last Input was ${userWord} which is not a valid word`);
+            }
 
-		 alert(`brah yu lost, shame on you`) 
-		 alert(`your score is ${userRecap.length}`); 
-		 alert(`your words are ${userRecap}`)
-   	 	
+            alert(`You lost!`);
+            alert(`Your score is: ${userRecap.length}.`);
+            alert(`Your valid words were: ${userRecap}`);
+            alert(`Your Invalid words were: ${userFails}`);
+
    	  }
 
 actualGame();
@@ -116,5 +132,3 @@ actualGame();
 ---
 
 >Please be kind I have a cat to feed.
-   	  
-   	  
