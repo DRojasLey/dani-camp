@@ -172,34 +172,34 @@ const areThereShort = (array6) => {
 
     function main(){
 
-        console.log(`This is the return of generating a new random dirty word ::: ${randStrGen(dictionary)}`)
+        console.log(`This is the return of generating a new random dirty word ::: "${randStrGen(dictionary)}" :::`)
         console.log('----------------------------------------------------------------------------------------------------------------------------') //spacer
 
         currentArray1 = dupRemoval(dictionary);
-        console.log(`This is part of the original dictionary ::: ${dictionary.slice(45,60)}`);
+        console.log(`This is part of the original dictionary ::: ${dictionary.slice(45,60)} :::`);
         console.log(dictionary.length);
         console.log('----------------------------------------------------------------------------------------------------------------------------') //spacer
 
-        console.log(`This is part of the current array without dups ::: ${currentArray1.slice(45,60)}`);
+        console.log(`This is part of the current array without dups ::: ${currentArray1.slice(45,60)} :::`);
         console.log(currentArray1.length);
         console.log('---------------------------------------------------------------------------') //spacer
         let dirtyArry = dirtyGen(currentArray1);
-        console.log(`This is part of the dirty array ::: ${dirtyArry.slice(45,60)}`);
+        console.log(`This is part of the dirty array ::: ${dirtyArry.slice(45,60)} :::`);
         console.log(dirtyArry.length);
         console.log('----------------------------------------------------------------------------------------------------------------------------') //spacer
 
         let dirtyIDArr = idGenerator(dirtyArry);
-        console.log(`This is part of the dirty array with IDs ::: ${dirtyIDArr.slice(45,60)}`);
+        console.log(`This is part of the dirty array with IDs ::: ${dirtyIDArr.slice(45,60)} :::`);
         console.log(dirtyIDArr.length);
         console.log('----------------------------------------------------------------------------------------------------------------------------') //spacer
 
         let cleanArr = cleaningDirty(dirtyIDArr);
-        console.log(`This is part of the clean array with IDs ::: ${cleanArr.slice(45,60)}`);
+        console.log(`This is part of the clean array with IDs ::: ${cleanArr.slice(45,60)} :::`);
         console.log(cleanArr.length);
         console.log('----------------------------------------------------------------------------------------------------------------------------') //spacer
 
         let noNums = noMoreNums(cleanArr);
-        console.log(`This is part of the array without IDs after Maduro prohibition ::: ${noNums.slice(45,60)}`);
+        console.log(`This is part of the array without IDs after Maduro prohibition ::: ${noNums.slice(45,60)} :::`);
         console.log(noNums.length)
         console.log('----------------------------------------------------------------------------------------------------------------------------') //spacer
 
@@ -207,7 +207,7 @@ const areThereShort = (array6) => {
         console.log('----------------------------------------------------------------------------------------------------------------------------') //spacer
 
         let notthree = threeLettersNot(noNums);
-        console.log(`This is part of the array without 3 letter words ::: ${notthree.slice(45,60)}`);
+        console.log(`This is part of the array without 3 letter words ::: ${notthree.slice(45,60)} :::`);
         console.log(notthree.length)
         console.log('----------------------------------------------------------------------------------------------------------------------------') //spacer
 
@@ -215,11 +215,11 @@ const areThereShort = (array6) => {
         console.log('----------------------------------------------------------------------------------------------------------------------------') //spacer
 
         let onlyNine = getNineLetterWords(notthree);
-        console.log(`This the array with only two 9 letter words ::: ${onlyNine.slice(0)}`);
+        console.log(`This the array with only two 9 letter words ::: ${onlyNine.slice(0)} :::`);
         console.log(onlyNine.length)
         console.log('----------------------------------------------------------------------------------------------------------------------------') //spacer
         let wordPowerLevel = toAscci(onlyNine);
-        console.log(`This the power level of the 9 letter words ::: ${wordPowerLevel.slice(0)}`);
+        console.log(`This the power level of the 9 letter words ::: ${wordPowerLevel.slice(0)} :::`);
         console.log('----------------------------------------------------------------------------------------------------------------------------') //spacer
         console.log('----------------------------------------------------------------------------------------------------------------------------') //spacer
         const battleArena = (powerLevels) =>{
