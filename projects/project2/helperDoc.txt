@@ -1,0 +1,57 @@
+id generator:
+
+this one will take the input from the previous function
+
+which should be a reduced array without duplicates
+
+measure the array and repeat the following process
+
+chec
+
+
+until the array length is duplicated the script should take the index of the current element, substract 1 and write an element (that contains the current index of the current element) to the resulting index number
+The original element must not be deleted we are just adding one element to the left of each element in the array
+
+
+Generate two ASCII symbols randomly between 33 and 63
+store them in an array
+
+pop the last character and assign it to the splice function as the 3rd parameter (the data to add)
+
+generate a random number that is within the length of the current randomword array
+
+pass that number to the splice function as the index to add
+
+/////////////////////
+
+
+the data validator function should get an element and then validate what it is composed of:
+should return:
+
+Word for only letters 
+Identifier for only numbers
+dirty for mixed content 
+
+//////////////////////////////
+
+
+
+the function: dataValidator(element);
+
+will return either 'word' , 'id' or 'dirty'
+
+resultingarray is an empty array and should be used as accumulator of the the reduce function
+
+I want to use the .reduce method of array to check each element of an array by passing it to the dataValidator function, and if the element is clean, it and the element immediately before it should be added to the resultingarray
+It then should return the resulting array
+
+
+///////////////////////////
+
+
+
+
+
+
+
+
