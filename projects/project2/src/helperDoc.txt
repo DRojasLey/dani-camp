@@ -25,7 +25,7 @@ pass that number to the splice function as the index to add
 /////////////////////
 
 
-the data validator function should get an element and then validate what it is composed of:
+the dataValidator function should get an element and then validate what it is composed of:
 should return:
 
 Word for only letters 
@@ -47,6 +47,57 @@ It then should return the resulting array
 
 
 ///////////////////////////
+
+
+the dataValidator function receives an element and then validate what it is composed of and returns:
+
+Word for only letters 
+Identifier for only numbers
+dirty for mixed content 
+
+I want to use the dataValidator function to:
+if it is a word:
+	we check if it is shorter or equal to 3 letters and if it is we return true
+	(no need to check further if there is at least 1 short word)
+
+if it is a number:
+	we do nothing and move to the next element
+if it is dirty we should return 'error mixed content'
+
+
+/////////////////////////////////
+
+We want to use the .reduce method, to add only the words which length is higher than 3
+
+//////////////////////////////
+
+
+optional functions that didn't make it:
+
+1. We don't really like odd numbers in this house, we follow the rule of 2, remove any word element which number identifier is an odd number
+
+	> "Two there should be; no more, no less. One to embody power, the other to crave it." *(Sheev Palpatine)*
+
+1. We really mean it, remove any word which identifier includes at least an odd number.
+
+
+>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<
+
+
+How do I make all in main to not have console.logs
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
