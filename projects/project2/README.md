@@ -1,4 +1,5 @@
 # Project 2: Dictionary Scrapping
+## Ver 1.0.0
 
 >`Connor MacLeod : How do you fight such a savage? `
 
@@ -61,5 +62,13 @@ Ramirez: When only a few of us are left, we will feel an irresistible pull towar
 
 1. With only 2 words left convert all characters into numeric values, and add them, whichever gets the higher result will be the **[ONE](https://youtu.be/ZAETcSK97F0)**
 
+## Next steps
 
+Adding functions:
+
+1. We don't really like odd numbers in this house, we follow the rule of 2, remove any word element which number identifier is an odd number
+
+	> "Two there should be; no more, no less. One to embody power, the other to crave it." *(Sheev Palpatine)*
+
+1. We really mean it, remove any word which identifier includes at least an odd number.
 
