@@ -16,9 +16,9 @@ The project is an extension of the kata: ***[Good vs Evil](https://shorturl.at/E
 
 ## General Idea
 
-We will generate good and evil armies, face them in environments and get a winner
+We will generate good and evil armies, face them in environments to  get a winner
 
-The best of 3 battles will be blessed by **Eru Ilúvatar** themself.
+The winner will be blessed by **Eru Ilúvatar** themself.
 
 As in the original kata we will have worths assigned to each race, but we will extend the races and add more properties that will allow us to get more complex battles
 
@@ -32,7 +32,6 @@ Extended races:
 Added properties:
 * Blessing =  A numeric value that will add to the power of a race
 * Condition = A string denoting the level of energy of a race (energetic, tired, exhausted)
-* Age = A numeric value that represents the average age of the army in the battle
 * Worth = the numeric value that is actually calculated on the battle
 
 We start by asking our user for some data that we will use for randomnizing the scenarios, we will provide the values the user selects from the available options.
@@ -41,6 +40,7 @@ We start by asking our user for some data that we will use for randomnizing the 
 * Location
 * Active Ainu Blessing for the battle
 
+We must return the date of the battle and a recap of the battle
 
 ## What does the script do:
 
@@ -48,7 +48,6 @@ We start by asking our user for some data that we will use for randomnizing the 
 1. Generates a battle object
 1. Randomly Generates armies based on the scenario proposed by the user
 1. Calculates the actual battle numbers
-1. Compares the numbers after the three battles
 1. Returns a winner (Good or Evil)
 
 
