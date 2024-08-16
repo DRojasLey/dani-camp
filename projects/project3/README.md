@@ -1,5 +1,5 @@
 # Project 3: The War For Middle Earth Simulator
-## Ver 1.0.0
+## Ver 1.0.1
 
 [The One Ring](https://upload.wikimedia.org/wikipedia/commons/transcoded/5/50/The_one_ring.ogg/The_one_ring.ogg.mp3)
 
