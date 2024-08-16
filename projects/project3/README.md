@@ -31,7 +31,6 @@ Extended races:
 
 Added properties:
 * Blessing =  A numeric value that will add to the power of a race
-* Condition = A string denoting the level of energy of a race (energetic, tired, exhausted)
 * Worth = the numeric value that is actually calculated on the battle
 
 We start by asking our user for some data that we will use for randomnizing the scenarios, we will provide the values the user selects from the available options.
