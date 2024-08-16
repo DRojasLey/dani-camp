@@ -1,5 +1,5 @@
 # Project 3: The War For Middle Earth Simulator
-## Ver 0.1.0
+## Ver 1.0.0
 
 [The One Ring](https://upload.wikimedia.org/wikipedia/commons/transcoded/5/50/The_one_ring.ogg/The_one_ring.ogg.mp3)
 
@@ -36,8 +36,8 @@ Added properties:
 We start by asking our user for some data that we will use for randomnizing the scenarios, we will provide the values the user selects from the available options.
 
 * Age (1st age - 4th age, time before the first ages are not taken into account as some races might not exist by that time)
-* Location
-* Active Ainu Blessing for the battle
+* Location (based on cardinal points for simplicity)
+* Active Valar Blessing for the battle (the name of the Valar that will bring multipliers to certain races with affinity)
 
 We must return the date of the battle and a recap of the battle
 
@@ -47,6 +47,6 @@ We must return the date of the battle and a recap of the battle
 1. Generates a battle object
 1. Randomly Generates armies based on the scenario proposed by the user
 1. Calculates the actual battle numbers
-1. Returns a winner (Good or Evil)
+1. Returns a winner (Good, Evil or tie)
 
 

@@ -1,9 +1,16 @@
 
-// races and their important characteristics
-// type: affiliation, worth: how strong blessingFactor: how much is the army affected depending on the blesser blesser: which valar is most related  location: where is the main residence of this race,
-// population: how many numbers are expected depending in the location of the battle
-// each value represents the expected population on the [south, north, west, east] if a number is expected it gets multiplied by the percentage that is expected in that area
-
+/* Races and their important characteristics:
+    type: affiliation,
+    worth: how strong,
+    blessingFactor: how much is the army affected depending on the blesser
+    blesser: which valar has affinity for the race,
+    location: where is the main residence of this race,
+    population: how many numbers are expected depending in the location of the battle:
+        Each value represents the expected population on the area as follows:
+            [south, north, west, east]
+        The number of soldiers for the race gets multiplied by the percentage of population that is expected in that area
+        which means, that sometimes even if there is a number generated, if the current area does not have any ent, it will be multiplied by 0
+*/
 const races = {
     hobbits:{ type: "good", worth: 1 , blessingFactor: 1 , blesser:'Estë',location: 'west', _population:[0.1, 0.1, 1, 0.2]} ,
     dunedain: { type: "good", worth: 3 , blessingFactor: 2 ,  blesser: 'Oromë',location: 'south', _population: [1, 0.5, 0.8, 0.8]},
@@ -31,7 +38,7 @@ const races = {
 window.races = races;
 
 
-// blessers object to be used in the calculation of the blessing
+/* Valar names and relations, object to be used in the calculation of the blessing */
 let valares = {
     1:'Manwë',
     2:'Melkor',
@@ -45,7 +52,7 @@ let valares = {
 window.valares = valares;
 
 
-/* age is number coming from the user input should return a multiplier depending on the era and the dominant race  */
+/* Multiplies the number of troops of certain races which are dominand during said age */
 
 const ages = {first:(race, number) => {
     if (race === 'elves') {
@@ -85,7 +92,7 @@ maxYear4: 4024,
 }
 window.ages = ages;
 
-// we will use these messages for the user interface
+/* Messages and method used for interacting with the user */
 
 const msg = {
     initialMsg: [`Very few are given the power to control the fate of middle earth...`,
@@ -113,6 +120,5 @@ const msg = {
           winner === loser ? alert(messages[3]) : alert(messages[2]);
         }
     }
-
-        window.msg = msg;
+window.msg = msg;
 

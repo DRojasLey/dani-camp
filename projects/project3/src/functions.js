@@ -1,6 +1,8 @@
-//declares the input request from the user, return an array of 3 numbers for each selection:
-//[age:1-4, location: 1-4, valar: 1-8]
-
+/* Declares the input request from the user,
+performs data validation on the numbers
+returns an array of 3 numbers for each selection:
+[age:1-4, location: 1-4, valar: 1-8]
+*/
 window.getUserInput = () => {
     alert(msg.initialMsg[0]);
     alert(msg.initialMsg[1]);
@@ -38,8 +40,9 @@ window.getUserInput = () => {
     return [eons, location, valar];
 };
 
-
-// generates an array of random numbers that correspond to the races in the battle
+/*Generates an array of random numbers that correspond to the races in the battle
+applies all buff or debuffs on the race numbers depending on location, blessing and age
+*/
 
 window.generateNumbers = (age, atype, location, blesser)=>{
     // generate an array with the name of the races where the type equals the type of army we want to generate
@@ -68,7 +71,10 @@ window.generateNumbers = (age, atype, location, blesser)=>{
 
     return realArmyNums;
 };
-//generates an object that contains the characteristics of an army
+
+/*Generates an object that contains the characteristics of an army:
+TODO: should use the assign() method in any way to clone objects
+*/
 
  window.generateArmy = (type, locale, valar , era ) => {
     let getNewArmy = generateNumbers(era, type, locale, valar);
@@ -79,7 +85,8 @@ window.generateNumbers = (age, atype, location, blesser)=>{
      }
  };
 
- // this just gets the sum of the army size
+ /* Gets the sum of the army size object returns an integer */
+
 window.calculateArmyWorth = (armyObj) => {
     console.log(armyObj);
     let totalWorth =armyObj.size.reduce((suma, grupo)=>{
@@ -88,7 +95,9 @@ window.calculateArmyWorth = (armyObj) => {
     }, 0);
     return totalWorth;
 };
-// returns a string with the winner 'light', 'darkness', or tie
+
+/* Returns an array with the format [winner , loser] where the values can be: 'light', 'darkness', or 'tie' */
+
 window.battleCalculator = (worthGud, worthBad) => {
     if (worthGud > worthBad){
         return ["light", 'darkness'];
@@ -98,8 +107,9 @@ window.battleCalculator = (worthGud, worthBad) => {
         return ["tie", "tie"]
     };
 };
-// use the era to convert the current date into a valid year of the given age:
-// use the era to convert the current date into a valid year of the given age:
+
+/* Takes the age (number) to limit the range of years for the random date generator, returns a date object valid within the tolkien legendarium */
+
 window.battleDuration = (age)=>{
     let randomYear = Math.random();
     let randomMonth = Math.floor(Math.random() * 11);
@@ -116,18 +126,25 @@ window.battleDuration = (age)=>{
     return new Date(randomYear, randomMonth, randomDay);
 };
 
+// main function to complete the interactive tale
+
 const main = () => {
+    // Get the user input array
     let input = getUserInput();
-    console.log(input)
+    // Generate the armies based in the input, we get two objects:
     let gudArmy = generateArmy('good', input[0], input[2], input[1]);
-    console.log(gudArmy)
     let badArmy = generateArmy('evil', input[0], input[2], input[1]);
+    // Calculate each army power level it get's us 2 integers
     gudArmy = calculateArmyWorth(gudArmy);
     badArmy = calculateArmyWorth(badArmy);
+    // Calculate the result of the battle by comparing the integers, we get and array with 2 strings
     let resulto = battleCalculator(gudArmy, badArmy);
+    // Get the date in which the battle takes place, we get a date object
     let aDate = battleDuration(+input[1]);
+    // Depending of the position on the array we declare winner or loser
     let loser = resulto[1]
-    let winner =resulto[0]
+    let winner = resulto[0]
+    // Call the alert messages to finish the interactive tale
     msg.getResultMsg(aDate, +input[0], badArmy, gudArmy, winner, loser)
 
 };
