@@ -118,7 +118,8 @@ const msg = {
           alert(messages[0])
           alert(messages[1])
           winner === loser ? alert(messages[3]) : alert(messages[2]);
-        }
+        },
+    calculatingMsg: []
     }
 window.msg = msg;
 

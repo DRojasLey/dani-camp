@@ -126,26 +126,3 @@ window.battleDuration = (age)=>{
     return new Date(randomYear, randomMonth, randomDay);
 };
 
-// main function to complete the interactive tale
-
-const main = () => {
-    // Get the user input array
-    let input = getUserInput();
-    // Generate the armies based in the input, we get two objects:
-    let gudArmy = generateArmy('good', input[0], input[2], input[1]);
-    let badArmy = generateArmy('evil', input[0], input[2], input[1]);
-    // Calculate each army power level it get's us 2 integers
-    gudArmy = calculateArmyWorth(gudArmy);
-    badArmy = calculateArmyWorth(badArmy);
-    // Calculate the result of the battle by comparing the integers, we get and array with 2 strings
-    let resulto = battleCalculator(gudArmy, badArmy);
-    // Get the date in which the battle takes place, we get a date object
-    let aDate = battleDuration(+input[1]);
-    // Depending of the position on the array we declare winner or loser
-    let loser = resulto[1]
-    let winner = resulto[0]
-    // Call the alert messages to finish the interactive tale
-    msg.getResultMsg(aDate, +input[0], badArmy, gudArmy, winner, loser)
-
-};
-main();
