@@ -4,14 +4,14 @@
 > *(untested for all possible values)**
 
 
-> ["Where Time is but a Loop,
+> "Where Time is but a Loop,
 A Loose Stitch
 in the Universal Cloth,
 A Streamer might Seize
 upon a Chance, a Fatal slip –
 And plunge the Fate
 of Planets into Chaos..."
-―Moebius](https://static.wikia.nocookie.net/legacyofkain/images/5/57/VOICE27.XA-4-.oga/revision/latest?cb=20181227192421)
+―[Moebius](https://static.wikia.nocookie.net/legacyofkain/images/5/57/VOICE27.XA-4-.oga/revision/latest?cb=20181227192421)
 
 ## What to do:
 
