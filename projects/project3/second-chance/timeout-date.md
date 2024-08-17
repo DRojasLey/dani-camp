@@ -11,7 +11,7 @@ A Streamer might Seize
 upon a Chance, a Fatal slip –
 And plunge the Fate
 of Planets into Chaos..."
-―[Moebius](https://static.wikia.nocookie.net/legacyofkain/images/5/57/VOICE27.XA-4-.oga/revision/latest?cb=20181227192421)
+―Moebius
 
 ## What to do:
 
