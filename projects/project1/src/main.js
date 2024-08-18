@@ -1,9 +1,9 @@
- // main file for the actual Js code of the game
-        //The dictionary array is called using the window method
+// main file for the actual Js code of the game
+
+        //We will add the dictionary in this section, I will not add it yet to avoid all that clutter, we will use for now a small array
         let randomWord = '';
         let userFails = [];
         let userRecap = [];
-
 
         //Function to generate random words
 
@@ -27,7 +27,6 @@
 
         function wordProcessor(userInput){
             if (isOnlyLetter(userInput)){
-                console.log('si si');
                 userInput = userInput.toLowerCase()
                 if (userInput.length > 6){
                     if (userInput.charAt(0) === randomWord.charAt(randomWord.length-1)){    // checks if the character at 0 of the user word  is equal to the last character of the random word
@@ -49,24 +48,26 @@
 
         // main game function (for now? I mean I think if I add a menu it will need another function over this one :V)
 
+        const messages = {
+            machineTurn: (ourWord) => `My turn! my word is "${ourWord}", \n hit OK to introduce yours. \n (only letters no numbers nor symbols)`,
+            userTurn: () => `Introduce a word of 7 letters or more, \n using the last letter of my word.`,
+            lost1: () =>`You lost!`,
+            lost2: (userRecap) => `Your score is: ${userRecap.length === 0 ? '0' : userRecap.length}.`,
+            lost3: (userRecap) => `Your valid words were: ${userRecap.length === 0 ? 'no valid words' : userRecap}`,
+            lost4: (userFails, userWord) => `Your Invalid words were: ${userFails.length === 0 ? userWord : userFails}`,
+            wrongInput: (userWord) => `Your last Input was ${userWord} which is not a valid word`
+        }
+
         function actualGame(){
             let userWord = '';
             let ourWord = '';
             let prevWLetter ;
 
             ourWord = randomWordGenerator(''); // we initialize the game by assigning a random word to start?
-            // messages object
 
-            const messages = {
-                machineTurn: `My turn! my word is "${ourWord}", \n hit OK to introduce yours. \n (only letters no numbers nor symbols)`,
-                userTurn:  `Introduce a word of 7 letters or more, \n using the last letter of my word.`,
-                lost1:  `You lost!`,
-                lost2:  `Your score is: ${userRecap.length === 0 ? '0' : userRecap.length}.`,
-                lost3:  `Your valid words were: ${userRecap.length === 0 ? 'no valid words' : userRecap}`,
-            }
             do{
-                alert(messages.machineTurn);
-                userWord = prompt(messages.userTurn);
+                alert(messages.machineTurn(ourWord));
+                userWord = prompt(messages.userTurn());
                 prevWLetter = wordProcessor(userWord);
                 if (prevWLetter){
                     ourWord = randomWordGenerator(prevWLetter);
@@ -74,16 +75,13 @@
             } while (userFails.length < 3 && prevWLetter);
 
             if (!prevWLetter) {
-                alert(`Your last Input was ${userWord} which is not a valid word`);
+                alert(messages.wrongInput(userWord));
             }
 
-            alert(messages.lost1);
-            alert(messages.lost2);
-            alert(messages.lost3);
-            alert(`Your Invalid words were: ${userFails.length === 0 ? userWord : userFails}`);
+            alert(messages.lost1());
+            alert(messages.lost2(userRecap));
+            alert(messages.lost3(userRecap));
+            alert(messages.lost4(userFails, userWord));
         }
 
-        // Place holder for a potential menu function
-
         actualGame();
-
