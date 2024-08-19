@@ -59,16 +59,59 @@ a {
 }
 
 .playBtn {
-    margin: 5%;
-}
+    background-color: white;
+    border: 2px solid #BC002D;
+	border-radius: 0;
+	box-shadow: none;
+	width: 25rem; /* adjust as required */
+	height: 4rem; /* adjust as required */
+    margin: 5%;}
 
 .howToBtn {
+    background-color: white;
+    border: 2px solid #BC002D;
+	border-radius: 0;
+	box-shadow: none;
+	width: 25rem; /* adjust as required */
+	height: 4rem; /* adjust as required */
+    margin: 5%;}
+
+.scoreBtn {
+    background-color: white;
+    border: 2px solid #BC002D;
+	border-radius: 0;
+	box-shadow: none;
+	width: 25rem; /* adjust as required */
+	height: 4rem; /* adjust as required */
     margin: 5%;
 }
 
-.scoreBtn {
-    margin: 5%;
+
+
+.scoreBtn:hover {
+    background: hsl(345.63829787234044deg 100% 26.86274509803922%);
+    border: 2px solid hsl(345.63829787234044deg 100% 26.86274509803922%);
+	border-radius: 0;
+	box-shadow: none;
+	color: white;
 }
+.howToBtn:hover {
+    background: hsl(345.63829787234044deg 100% 26.86274509803922%);
+    border: 2px solid hsl(345.63829787234044deg 100% 26.86274509803922%);
+	border-radius: 0;
+	box-shadow: none;
+	color: white;
+}
+.playBtn:hover {
+    background: hsl(345.63829787234044deg 100% 26.86274509803922%);
+    border: 2px solid hsl(345.63829787234044deg 100% 26.86274509803922%);
+	border-radius: 0;
+	box-shadow: none;
+	color: white;
+}
+
+
+
 
 .gameContainer{
     font-family: "Noto Sans JP", sans-serif;
@@ -96,8 +139,16 @@ a {
     justify-items: center;
     margin: 0 20%;
     align-items: center;
+
+}
+.scoreTable {
+    list-style: none;
 }
 
+.inputTittle {
+    margin: 10;
+
+}
 
 .instructions {
     font-family: "Noto Sans JP", sans-serif;
@@ -106,7 +157,7 @@ a {
     flex-direction: column;
     justify-content: space-evenly;
     justify-items: center;
-    margin: 10 40%;
+    margin: 0 40%;
 
 }
 .howToTittle {
