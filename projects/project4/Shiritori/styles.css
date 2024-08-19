@@ -1,0 +1,167 @@
+a {
+    text-decoration: none;
+}
+
+.titleContainer {
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 10px;
+    color: #BC002D;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.subTitutulContainer{
+    display: flex;
+    flex-direction: row;
+    color: #000;
+    margin: 0;
+
+}
+
+.subTopTitutul {
+    font-style: normal;
+    font-size: 50px;
+    margin: 0;
+
+}
+
+.subChinTitutul{
+    font-style: normal;
+    font-size: 20px;
+    margin: 0;
+
+}
+
+.mainTittle {
+    font-weight: 900;
+    font-size: 160px;
+    margin: 0;
+}
+
+.buttonContainer {
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    justify-items: center;
+    margin: 0 40%;
+}
+
+.playBtn {
+    margin: 5%;
+}
+
+.howToBtn {
+    margin: 5%;
+}
+
+.scoreBtn {
+    margin: 5%;
+}
+
+.gameContainer{
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    justify-items: center;
+    margin: 0 20%;
+    align-items: center;
+}
+
+.playedWords{
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    justify-items: center;
+    margin: 0 20%;
+    align-items: center;
+}
+
+
+.instructions {
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    justify-items: center;
+    margin: 10 40%;
+
+}
+.howToTittle {
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+}
+
+.howToText {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 19px;
+}
+
+.footerLinks {
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    justify-items: center;
+}
+
+
+
+.footerLinksList{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+}
+
+.fLinks{
+    margin: 0 10px 0 10px;
+    font-size: 20px;
+}
+
+.socialMedia {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    justify-items: center;
+}
+
+.sIcon {
+    
+}
+
+.computer {
+    color: #BC002D;
+}
+
+
+
+
