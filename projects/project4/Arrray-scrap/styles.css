@@ -1,0 +1,194 @@
+
+body{
+    background-color: #191b1c;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.myHeader {
+    font-family: "New Amsterdam", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin: 5% 0 0 0;
+    padding: 0;
+}
+
+.titutul {
+    font-size: 7.5rem;
+    margin: 0;
+    padding: 0;
+    text-shadow: 5px 2px 5px #305dda;
+
+}
+
+.backgroundElement {
+    margin: 0 10%;
+    box-shadow:  10px 0px 15px 0px #305dda, -20px 0px 15px 0px #305dda, 20px 0px 15px 0px #305dda, -10px 0px 15px 0px #305dda ;
+    background-color: #34393e;
+    display: flex;
+    padding: 3%;
+}
+
+.mainInteractive {
+    background-color: #565964;
+    margin: 0 1.5% 0 0;
+    flex-basis: 100%;
+    padding: 3%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow:  1px 0px 5px 0px #ffffff, -2px 0px 5px 0px #ffffff, 2px 0px 5px 0px #ffffff, -1px 0px 5px 0px #ffffff ;
+
+}
+
+.currentActionTitle {
+    font-family: "New Amsterdam", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    
+}
+
+.listOfActions {
+    display: flex;
+    align-items: center;
+    
+}
+
+.action {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.startBtn {
+    background-color: white;
+    border: 2px solid hsl(224, 70%, 52%);
+    border-radius: 0;
+    font-size: 25px;
+    box-shadow: none;
+    width: 8rem; 
+    height: 4rem; 
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.startBtn:hover {
+    background: hsl(224, 70%, 52%);
+    border: 2px solid hsl(224, 70%, 52%);
+    color: #ffffff;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 30px;
+    
+}
+
+.startBtn:disabled {
+    background-color: white;
+    border-radius: 0;
+    color: #ffffff
+}
+
+.nextBtn {
+    background-color: white;
+    border: 2px solid hsl(224, 70%, 52%);
+    border-radius: 0;
+    font-size: 25px;
+    box-shadow: none;
+    width: 8rem; 
+    height: 4rem; 
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    align-self: flex-end;
+}
+
+.nextBtn:hover {
+    background: hsl(224, 70%, 52%);
+    border: 2px solid hsl(224, 70%, 52%);
+    color: #ffffff;
+    font-size: 40px;
+    border-radius: 0;
+    box-shadow: none;
+    
+}
+
+.nextBtn:disabled {
+    background-color: white;
+    border-radius: 0;
+    color: #ffffff
+}
+
+
+.ActionText {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    align-self: flex-start;
+    
+}
+
+
+
+.arrayStateSection {
+    background-color: #565964;
+    margin: 0 0 0 1.5%;
+    padding: 5%;
+    flex-basis: 100%;
+    box-shadow:  1px 0px 5px 0px #ffffff, -2px 0px 5px 0px #ffffff, 2px 0px 5px 0px #ffffff, -1px 0px 5px 0px #ffffff ;
+
+}
+
+.arrayStateTitle {
+    font-family: "New Amsterdam", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*.printedArray {
+    
+}*/
+
+.footerLinks {
+    margin: 5% 0 0 0;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.footerLinksList {
+    display: flex;
+    justify-content: center;
+    margin-left: -2.5%;
+}
+
+.fLinks {
+    margin: 5%;
+}
+
+
