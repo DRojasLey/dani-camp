@@ -1,87 +1,252 @@
-// // main file for the actual Js code of the game
+// main file for the actual Js code of the game
 
-// //We will add the dictionary in this section, I will not add it yet to avoid all that clutter, we will use for now a small array
-// let randomWord = '';
-// let userFails = [];
-// let userRecap = [];
+//We will add the dictionary in this section, I will not add it yet to avoid all that clutter, we will use for now a small array
+let randomWord = '';
+let userFails = [];
+let userRecap = [];
+let ourWord = '';
+let prevWLetter ;
+// DOM variables
 
-// //Function to generate random words
+//back to menu button
 
-// function randomWordGenerator(lastLetter){
-//     if (lastLetter === ''){
-//         randomWord = dictionary[Math.floor(Math.random() * dictionary.length)];
-//         return randomWord;
-//     } else {
-//         do {
-//             randomWord = dictionary[Math.floor(Math.random() * dictionary.length)];
-//         } while (lastLetter !== randomWord.charAt(0));
-//         return randomWord;
-//     }
+const sendingToHome = () =>{
+    window.location.href = './index.html';
+};
 
-// }
-// //function that checks if the string is only letters
-// let isOnlyLetter = str => /^[A-Z]+$/i.test(str);
+const computerWord = document.getElementById('computer');
+const submitButton = document.getElementById('sbmtBtn');
+const gameContainer = document.getElementById('gameContainer');
+const invalidInputBlock = document.getElementById('invalidInputBlock');
+const tryAgainBtn = document.getElementById('tryAgainBtnCont');
+const backBtnGame = document.getElementById('backBtn2');
+const finishBtnCtn = document.getElementById('finishBtnCont');
+const finishSection = document.getElementById('finishScore')
+const finishBtn = document.getElementById('finishBtn');
+const scoreContainer = document.getElementById('playedWords');
+const titutulCont = document.getElementById('titleContainer');
+const lostMsg = titutulCont.appendChild(document.createElement('h3'));
+const badPointo = document.getElementById('badPointo');
+const gudPointo = document.getElementById('gudPointo');
+const pointoCont = document.querySelector('#pointosContainer');
+const userInputCont = document.querySelector('#userInputCont');
+const pointoInsert = document.querySelector('#pointoIsert');
+const gudList = document.getElementById('scoreTableGood');
+const badList = document.getElementById('scoreTableBad');
+
+backBtnGame.addEventListener('click', sendingToHome)
+finishSection.style.display = 'none';
+invalidInputBlock.style.display = 'none';
+tryAgainBtn.style.display = 'none';
 
 
-// //function to validate the word and apply scoring
 
-// function wordProcessor(userInput){
-//     if (isOnlyLetter(userInput)){
-//         userInput = userInput.toLowerCase()
-//         if (userInput.length > 6){
-//             if (userInput.charAt(0) === randomWord.charAt(randomWord.length-1)){    // checks if the character at 0 of the user word  is equal to the last character of the random word
-//                 dictionary.push(userInput);
-//                 userRecap.push(userInput);
-//             } else {
-//                 userFails.push(userInput); // adds a fail to the fail array
-//             };
+//Function to dynamically update the points
 
-//         } else {
-//             userFails.push(userInput);// adds a fail to the fail array
-//         }
-//     } else {
-//         console.log(`bad input "more than words"`);
-//         return ''; //WordProcessor will return false to the actualGame if the input is not correct
-//     }
-//     return userInput.charAt(userInput.length-1); // I feel like including this task here will make me reprocess the word everytime, maybe we could implement a solution to this later
-// }
+function updatePoint(gOrB){
+    if (gOrB === 'g'){
+        return `HITS: ${userRecap.length}`;
+    } else if (gOrB === 'b'){
+        return `FAILS: ${userFails.length}`;
+    } else {
+        alert('Bad Good Or Bad Input')
+    }
+};
 
-// // main game function (for now? I mean I think if I add a menu it will need another function over this one :V)
 
-// const messages = {
-//     machineTurn: (ourWord) => `My turn! my word is "${ourWord}", \n hit OK to introduce yours. \n (only letters no numbers nor symbols)`,
-//     userTurn: () => `Introduce a word of 7 letters or more, \n using the last letter of my word.`,
-//     lost1: () =>`You lost!`,
-//     lost2: (userRecap) => `Your score is: ${userRecap.length === 0 ? '0' : userRecap.length}.`,
-//     lost3: (userRecap) => `Your valid words were: ${userRecap.length === 0 ? 'no valid words' : userRecap}`,
-//     lost4: (userFails, userWord) => `Your Invalid words were: ${userFails.length === 0 ? userWord : userFails}`,
-//     wrongInput: (userWord) => `Your last Input was ${userWord} which is not a valid word`
-// }
+//finish the game action:
 
-// function actualGame(){
-//     let userWord = '';
-//     let ourWord = '';
-//     let prevWLetter ;
+const finishGame = () =>{
+    pointoCont.style.alignItems = 'center'
+    finishSection.style.display = 'flex';
+    finishSection.appendChild(pointoCont);
+    pointoCont.setAttribute('align-items', 'center')
+    gameContainer.style.display = 'none';
+    finishBtnCtn.style.display = 'none';
+    tryAgainBtn.style.display = 'none';
+    submitButton.style.display = 'none';
+    scoreContainer.style.display = 'none';
+    clearList(gudList);
+    clearList(badList);
+};
 
-//     ourWord = randomWordGenerator(''); // we initialize the game by assigning a random word to start?
+finishBtn.addEventListener('click', finishGame)
 
-//     do{
-//         alert(messages.machineTurn(ourWord));
-//         userWord = prompt(messages.userTurn());
-//         prevWLetter = wordProcessor(userWord);
-//         if (prevWLetter){
-//             ourWord = randomWordGenerator(prevWLetter);
-//         }
-//     } while (userFails.length < 3 && prevWLetter);
+//restart the game function:
 
-//     if (!prevWLetter) {
-//         alert(messages.wrongInput(userWord));
-//     }
+const gameAgain =  () =>{
+    //TODO: reset the  scores
+    //hid the alert
+    userFails = [];
+    userRecap = [];
+    lostMsg.remove()
+    gameContainer.style.display = 'flex'
+    gudPointo.innerText = updatePoint('g');
+    badPointo.innerText = updatePoint('b');
+    pointoInsert.appendChild(pointoCont);
+    submitButton.style.display = 'block'
+    finishBtnCtn.style.display = 'flex'
+    scoreContainer.style.display = 'flex';
+    finishSection.style.display = 'none';
+    invalidInputBlock.style.display = 'none'
+    tryAgainBtn.style.display = 'none'
+    
+    
+};
 
-//     alert(messages.lost1());
-//     alert(messages.lost2(userRecap));
-//     alert(messages.lost3(userRecap));
-//     alert(messages.lost4(userFails, userWord));
-// }
+//generate a random word and pass it to the computer word
 
-// actualGame();
+window.addEventListener("load", (event) => {
+    ourWord = randomWordGenerator(''); // we initialize the game by assigning a random word to start?
+    computerWord.innerText = ourWord;
+});
+
+
+//clear the list function:
+
+function clearList(list){
+    while (list.firstChild) {
+        list.removeChild(list.firstChild);
+    }
+};
+
+//actions to take when the user loses
+
+function userLosesActions(){
+    finishSection.style.display = 'flex';
+    finishSection.appendChild(pointoCont);
+    pointoCont.setAttribute('align-items', 'center')
+    gameContainer.style.display = 'none';
+    finishBtnCtn.style.display = 'none';
+    tryAgainBtn.style.display = 'flex';
+    submitButton.style.display = 'none';
+    scoreContainer.style.display = 'none';
+    clearList(gudList);
+    clearList(badList);
+    tryAgainBtn.addEventListener('click', gameAgain);
+
+};
+
+//user losses message creation
+
+function userLoses(){
+    lostMsg.innerText = 'You Lost'
+    lostMsg.setAttribute('id','lostTxt');
+    lostMsg.setAttribute('class','lostTxt');
+};
+
+
+function badInputActions(word){
+    gameContainer.style.display = 'none';
+    submitButton.style.display = 'none';
+    finishBtnCtn.style.display = 'none';
+    scoreContainer.style.display = 'none';
+    invalidWord(word);
+    finishSection.style.display = 'flex';
+    invalidInputBlock.style.display = 'flex';
+    tryAgainBtn.style.display = 'flex';
+    clearList(gudList);
+    clearList(badList);
+    tryAgainBtn.addEventListener('click', gameAgain);
+
+};
+
+//Function to generate random words
+
+function randomWordGenerator(lastLetter){
+    if (lastLetter === ''){
+        randomWord = dictionary[Math.floor(Math.random() * dictionary.length)];
+        return randomWord;
+    } else {
+        do {
+            randomWord = dictionary[Math.floor(Math.random() * dictionary.length)];
+        } while (lastLetter !== randomWord.charAt(0));
+        return randomWord;
+    }
+    
+};
+
+//function that checks if the string is only letters
+
+function isOnlyLetter(str){
+    return /^[A-Z]+$/i.test(str)
+};
+
+//function to add words to the good words list
+
+function goodList(){
+    let newWordToList = document.createElement('li');
+    newWordToList.textContent = userRecap[userRecap.length -1];
+    gudList.appendChild(newWordToList);
+};
+
+//function to add words to the good words list
+function badListo(){
+    const newWordToList = document.createElement('li');
+    newWordToList.textContent = userFails[userFails.length -1];
+    badList.appendChild(newWordToList);
+};
+
+//add a correct invalid input alert
+
+function invalidWord(word){
+    const newMsgToAdd = document.createElement('h3');
+    let badInputMsg = word ? `Your last Input was ${word} which is not a valid word` : `Your last Input was empty which is not valid`;
+    newMsgToAdd.innerText = badInputMsg
+    invalidInputBlock.appendChild(newMsgToAdd)
+};
+
+
+
+
+//function to validate the word and apply scoring
+
+function wordProcessor(userInput){
+    if (isOnlyLetter(userInput)){
+        userInput = userInput.toLowerCase()
+        if (userInput.length > 6){
+            if (userInput.charAt(0) === randomWord.charAt(randomWord.length-1)){    // checks if the character at 0 of the user word  is equal to the last character of the random word
+                dictionary.push(userInput);
+                userRecap.push(userInput);
+                gudPointo.innerText = updatePoint('g');
+                goodList();
+            } else {
+                userFails.push(userInput); // adds a fail to the fail array
+                badPointo.innerText = updatePoint('b');
+                badListo();
+            };
+        } else {
+            userFails.push(userInput);// adds a fail to the fail array
+            badPointo.innerText = updatePoint('b');
+            badListo();
+        }
+    } else {
+        console.log(`bad input "more than words"`);
+        return ''; //WordProcessor will return false to the actualGame if the input is not correct
+    }
+    return userInput.charAt(userInput.length-1); // I feel like including this task here will make me reprocess the word everytime, maybe we could implement a solution to this later
+};
+
+// Main action event
+
+submitButton.addEventListener('click', () => {
+    const userWordinput = document.getElementById('iuserInput').value
+    const inputElement = document.getElementById('iuserInput')
+    prevWLetter = wordProcessor(userWordinput);
+    if (userFails.length < 3 && prevWLetter){
+        ourWord = randomWordGenerator(prevWLetter);
+        computerWord.innerText = ourWord;
+        inputElement.value = ""
+    } else if (!prevWLetter) {
+        badInputActions(userWordinput);
+        inputElement.value = ""
+    } else {
+        //when user loses
+        userLoses();
+        userLosesActions()
+        inputElement.value = ""
+    };
+});
+
+
+

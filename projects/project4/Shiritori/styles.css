@@ -23,21 +23,21 @@ a {
     flex-direction: row;
     color: #000;
     margin: 0;
-    
+
 }
 
 .subTopTitutul {
     font-style: normal;
     font-size: 50px;
     margin: 0;
-    
+
 }
 
 .subChinTitutul{
     font-style: normal;
     font-size: 20px;
     margin: 0;
-    
+
 }
 
 .mainTittle {
@@ -45,7 +45,7 @@ a {
     font-size: 160px;
     margin: 0;
     text-shadow: 5px 3px #000;
-    
+
 }
 
 .mainTittle:hover {
@@ -53,7 +53,7 @@ a {
     font-size: 160px;
     margin: 0;
     text-shadow: 0 0 #000;
-    
+
 }
 
 .buttonContainer {
@@ -67,6 +67,20 @@ a {
     justify-content: space-evenly;
     justify-items: center;
     align-items: center;
+}
+
+.buttonContainer1 {
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    justify-items: center;
+    align-items: center;
+    margin: 0;
 }
 
 .playBtn {
@@ -87,7 +101,7 @@ a {
     box-shadow: none;
     width: 25rem;
     height: 4rem;
-    margin: 5px 5%;
+    margin: 5px 5% 5% 5%;
     box-shadow: 5px 3px #000;
 }
 
@@ -125,7 +139,117 @@ a {
     color: white;
 }
 
+.backBtn {
+    background-color: white;
+    border: 2px solid #BC002D;
+    border-radius: 0;
+    box-shadow: none;
+    width: 25rem;
+    height: 4rem;
+    margin: 5px 5% 5%;
+    box-shadow: 5px 3px #000;
+
+}
+.backBtn:hover {
+    background: hsl(345.63829787234044deg 100% 26.86274509803922%);
+    border: 2px solid hsl(345.63829787234044deg 100% 26.86274509803922%);
+    border-radius: 0;
+    box-shadow: none;
+    color: white;
+}
+
+.backBtn2 {
+    background-color: white;
+    border: 2px solid #BC002D;
+    border-radius: 0;
+    box-shadow: none;
+    width: 25rem;
+    height: 4rem;
+    margin: 5px 5% 5%;
+    box-shadow: 5px 3px #000;
+
+}
+
+.backBtn2:hover {
+    background: hsl(345.63829787234044deg 100% 26.86274509803922%);
+    border: 2px solid hsl(345.63829787234044deg 100% 26.86274509803922%);
+    border-radius: 0;
+    box-shadow: none;
+    color: white;
+}
+
+.sbmtBtn{
+    background-color: white;
+    border: 2px solid #BC002D;
+    border-radius: 0;
+    box-shadow: none;
+    width: 25rem;
+    height: 4rem;
+    margin: 0 0 2% 0;
+    box-shadow: 5px 3px #000;
+}
+.sbmtBtn:hover {
+    background: hsl(345.63829787234044deg 100% 26.86274509803922%);
+    border: 2px solid hsl(345.63829787234044deg 100% 26.86274509803922%);
+    border-radius: 0;
+    box-shadow: none;
+    color: white;
+}
+
+.finishBtn {
+    background-color: white;
+    border: 2px solid #BC002D;
+    border-radius: 0;
+    box-shadow: none;
+    width: 25rem;
+    height: 4rem;
+    margin: 0 0 5% 0;
+    box-shadow: 5px 3px #000;
+
+}
+
+.finishBtn:hover {
+    background: hsl(345.63829787234044deg 100% 26.86274509803922%);
+    border: 2px solid hsl(345.63829787234044deg 100% 26.86274509803922%);
+    border-radius: 0;
+    box-shadow: none;
+    color: white;
+}
+
 .gameContainer{
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    justify-items: center;
+    margin: 5% 20%;
+    align-items: center;
+}
+
+.invalidInputBlock{
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+    justify-items: center;
+    margin: 5% 20%;
+    align-items: center;
+    border-color: #BC002D;
+    border-width: 2px;
+    border-style: solid;
+    padding: 10%;
+}
+
+.pointosContainer {
     font-family: "Noto Sans JP", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -135,8 +259,27 @@ a {
     flex-direction: column;
     justify-content: space-evenly;
     justify-items: center;
-    margin: 0 20%;
+    margin: 0 20% 50% 20%;
     align-items: center;
+    text-align: center;
+}
+.pointos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.badPointo {
+    color: #BC002D;
+}
+.pointoTitutul {
+    margin: 0%;
+}
+
+.scoreBlock{
+    display: flex;
+    flex-direction: column;
+    margin: 4% 8%;
+    text-align: center;
 }
 
 .playedWords{
@@ -146,18 +289,64 @@ a {
     font-style: normal;
     font-size: 25px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-evenly;
     justify-items: center;
-    margin: 0 20%;
+    margin: 0 20% 2%;
+    align-items: center;
+    padding: 0;
+}
+
+.playedWords2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    justify-items: center;
+    margin: 0 42%;
     align-items: center;
 }
-.scoreTable {
+
+.scoreTableGood {
     list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+.scoreTableBad {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+.badPointo {
+    color: #BC002D;
 }
 
 .inputTittle {
-    margin: 10;
+    margin: 0;
+    text-align: center;
+}
+
+.lostTxt{
+    color: #BC002D;
+    font-size: 35px;
+    margin-top: 5%;
+}
+
+.userInput {
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+    height:150px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 5px 3px #000;
+}
+
+.playWordB {
+    color: #BC002D;
 }
 
 .instructions {
@@ -237,19 +426,31 @@ a {
     font-size: 20px;
 }
 
-.socialMedia {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    justify-items: center;
-}
-/*
-.sIcon {
 
-}
-*/
 .computer {
     color: #BC002D;
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.computerWordContainer {
+    color: #BC002D;
+    justify-content: center;
+    display: flex;
+    justify-items: center;
+    box-shadow: 5px 3px #000;
+    border: #000;
+    border-width: 1px;
+    border-style: solid;
+    padding: 4%;
+    height:125px;
+    width: 300px;
+    margin: 0 0 0 -8%;
+
 }
 
 /*

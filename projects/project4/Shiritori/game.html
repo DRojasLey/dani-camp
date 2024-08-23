@@ -6,45 +6,102 @@
     <title>Shiritori</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 
 </head>
 <body>
-    <header class="titleContainer">
+    <!-- title block -->
+
+    <header id="titleContainer" class="titleContainer">
         <div class="subTitutulContainer">
-        <h2 class="subTopTitutul">Shiritori</h2>
-        <h4 class="subChinTitutul">英語</h4>
+            <h2 class="subTopTitutul">Shiritori</h2>
+            <h4 class="subChinTitutul">英語</h4>
         </div>
         <h1 class="mainTittle">・しりとり・</h1>
     </header>
-    <section class="gameContainer">
-        <p class="inputTittle"> Your word:</p>
-        <input type="text" class="userInput">
-        <aside class="playedWords">
-            <ul class="scoreTable">
-                <li class="playWord">userWord</li>
+    <!-- title block -->
+
+    <!-- Game gameContainer block -->
+    <section id="gameContainer" class="gameContainer">
+        <div>
+            <p class="inputTittle"> My word:</p>
+            <div class="computerWordContainer"><p id="computer" class="computer">My Word</p></div>
+        </div>
+        <div id="pointoIsert">
+            <div id="pointosContainer" class="pointosContainer">
+                <h4 id="testopuntaje" class="pointoTitutul">Score:</h4>
+                <ul class="pointos">
+                    <li id="gudPointo" class="gudPointo">HITS: 0</li>
+                    <li id="badPointo" class="badPointo">FAILS: 0</li>
+                </ul>
+            </div>
+        </div>
+        <div id="userInputCont">
+            <p class="inputTittle"> Your word:</p>
+            <input type="text" id="iuserInput" class="userInput" placeholder="Type here">
+        </div>
+        
+    </section>
+    <div id="submitBtnCont" class="buttonContainer1">
+        <button id="sbmtBtn" class="sbmtBtn">> SUBMIT WORD <</button>
+    </div>
+    <div id="finishBtnCont" class="buttonContainer1">
+        <button id="finishBtn" class="finishBtn">> FINISH <</button>
+    </div>
+    <!-- Game gameContainer block -->
+
+    <!-- Invalid input block -->
+    <section id="invalidInputBlock" class="invalidInputBlock">
+
+    </section>
+    <!-- Invalid input block -->
+
+    <!-- Finish  block -->
+
+    <section id="finishScore" class="playedWords2" ></section>
+
+    <!-- Finish  block -->
+
+    <div id="tryAgainBtnCont" class="buttonContainer1">
+        <button id="tryAgainBtn" class="sbmtBtn">> TRY  AGAIN <</button>
+    </div>
+
+    <!-- Points block -->
+
+    <section id="playedWords" class="playedWords">
+        <div>
+            <h4>Correct Words</h4>
+            <ul id="scoreTableGood" class="scoreTableGood">
+
             </ul>
-        </aside>
-        <p>・・・</p>
-        <p class="computer">roldanillo</p>
+        </div>
+        <div>
+            <h4>Incorrect Words</h4>
+            <ul id="scoreTableBad" class="scoreTableBad">
+            </ul>
+        </div>
     </section>
+    <!-- Points block -->
 
-</section>
-<footer>
-    <section class="footerLinks">
-        <ul class="footerLinksList">
-            <li class="fLinks"><a href="">Repo</a></li>
-            <li class="fLinks"><a href="">Home</a></li>
-        </ul>
+    <!-- navigation block -->
+    <section id="buttonsCont" class="buttonContainer">
+        <button id="backBtn2" class="backBtn2">> BACK TO MENU <</button>
+    </section>
+    <footer>
+        <section class="footerLinks">
+            <ul class="footerLinksList">
+                <li  id="fLinks"  class="fLinks"><a href="https://github.com/DRojasLey/dani-camp/tree/4-project/1-2-dev/projects/project4/Shiritori" target="_blank">Repo</a></li>
+                <li  id="fLinks"  class="fLinks"><a href="./index.html">Home</a></li>
+            </ul>
 
-    </section>
-    <section class="socialMedia">
-        <figure class="sIcon"></figure>
-        <figure class="sIcon"></figure>
-    </section>
-</footer>
-<script src="./dictionary.js" type="text/javascript" ></script>
-<script src="./main.js" type="text/javascript" ></script>
+        </section>
+    </footer>
+    <!-- navigation block -->
+
+    <script src="./dictionary.js" type="text/javascript" ></script>
+    <script src="./main.js" type="text/javascript" ></script>
 </body>
 </html>
+
+
