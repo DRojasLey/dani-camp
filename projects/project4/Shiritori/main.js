@@ -163,7 +163,7 @@ function randomWordGenerator(lastLetter){
         } while (lastLetter !== randomWord.charAt(0));
         return randomWord;
     }
-    
+
 };
 
 //function that checks if the string is only letters
@@ -195,9 +195,6 @@ function invalidWord(word){
     newMsgToAdd.innerText = badInputMsg
     invalidInputBlock.appendChild(newMsgToAdd)
 };
-
-
-
 
 //function to validate the word and apply scoring
 

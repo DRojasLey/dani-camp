@@ -3,25 +3,98 @@ randomWord = dictionary[Math.floor(Math.random() * dictionary.length)];
 return randomWord;
 */
 
+//defining variables
+
+let currentArray1 = [];
+
+//DOM constand definitions:
+
+const arrayLengthReport = document.getElementById('ArrLengthRport');
+const arrayWordsList = document.getElementById('arrayWords')
+const startBtn = document.getElementById('startBtn');
+const listOfActions = document.getElementById('listOfActions');
+
+// word list adding function:
+// this function should take the Current array slice a portion of the array
+// then for each word add a new li element to the words report list
+
+function addWordsToReport(currentData){
+  const sliceOfArray = currentData.slice(100, 200);
+  sliceOfArray.forEach(element => {
+    const newLiToList = document.createElement('li');
+    newLiToList.textContent = element;
+    arrayWordsList.appendChild(newLiToList)
+  });
+};
+
+const reportMsgs = {
+  startMsg: `Listing the dictionary array, currently it has '${dictionary.length}' elements., \n We can generate random dirty words as in: \n  "${randStrGen(
+        dictionary)}". `,
+  firstActionMsg: `L`
+};
+
+//function to show the array length report
+function arrayLengthRep(currentData){
+  arrayLengthReport.innerText = currentData.length
+};
+
+//function to add the first action report
+
+function reportPrevAction(ActionTextReport = 'No previous report provided', nextAction){
+    const prevActionReportBlock = document.createElement('li');
+    const prevActionText = document.createElement('p');
+    const nextActionButton = document.createElement('button');
+    prevActionReportBlock.setAttribute('class', 'action');
+    prevActionText.setAttribute('class', 'ActionText');
+    nextActionButton.setAttribute('class', 'nextBtn');
+    prevActionReportBlock.appendChild(prevActionText);
+    prevActionReportBlock.appendChild(nextActionButton);
+    prevActionText.innerText = `${ActionTextReport}`
+    nextActionButton.innerText= 'Next'
+    currentArray1 = nextAction
+    nextActionButton.addEventListener('click', nextAction)
+    listOfActions.appendChild(prevActionReportBlock);
+
+};
+
+//This starts the game after the click on start
+
+startBtn.addEventListener('click', startGame)
+
+function startGame(){
+  addWordsToReport(dictionary);
+  arrayLengthRep(dictionary);
+  starterF()
+  reportPrevAction(reportMsgs.startMsg, dupRemoval(dictionary))
+  addWordsToReport(currentArray1);
+
+
+
+};
+
+
+
+
+
 //define the stats function, this is to be called each time a step has been completed
 
-const statsCall = (currentData) => {
-    // we'll get the output of the previous step and console log
-    console.log(`this is the current length of the array  ` + currentData.length);
-    console.log(
-      '------------------------------------------------------------------------------------------------------------------------------------------------------'
-    ); //spacer
-  };
-  
+// const statsCall = (currentData) => {
+//     // we'll get the output of the previous step and console log
+//     `this is the current length of the array  ` + currentData.length);
+//     console.log(
+//       '------------------------------------------------------------------------------------------------------------------------------------------------------'
+//     ); //spacer
+//   };
+
   // define the console logs function
-  
+
   const starterF = () => {
     console.log(
       `This is the return of generating a new random dirty word ::: "${randStrGen(
         dictionary
       )}" :::`
     );
-  
+
     console.log(
       `This is part of the original dictionary ::: ${dictionary.slice(
         45,
@@ -29,9 +102,9 @@ const statsCall = (currentData) => {
       )} :::`
     );
   };
-  
+
   // define duplicate removal function
-  
+
   function dupRemoval(array1) {
     let unique = [];
     array1.forEach((element) => {
@@ -47,9 +120,9 @@ const statsCall = (currentData) => {
     );
     return unique;
   }
-  
+
   // random string generator, should take 2 numbers any random number of letters and a symbol
-  const randStrGen = (array2 = dictionary) => {
+  function randStrGen(array2 = dictionary){
     let randomWord = array2[Math.floor(Math.random() * array2.length)];
     randomWord = randomWord.split('');
     let randomSymbols = [];
@@ -64,9 +137,9 @@ const statsCall = (currentData) => {
     }
     return randomWord.join('');
   };
-  
+
   // define the adding dirty elements function
-  
+
   const dirtyGen = (array3) => {
     const initialLength = array3.length; // we do not want the loop to calculate every cycle the length
     while (array3.length < initialLength * 2) {
@@ -77,12 +150,12 @@ const statsCall = (currentData) => {
     console.log(
       `This is part of the dirtied array ::: ${array3.slice(45, 60)} :::`
     );
-  
+
     return array3;
   };
-  
+
   // define the adding identifier number function
-  
+
   const idGenerator = (array4) => {
     let originalLength = array4.length; // we don't want to be calculating the array length in each cycle
     for (let count = originalLength - 1; count >= 0; count--) {
@@ -92,12 +165,12 @@ const statsCall = (currentData) => {
     console.log(
       `This is part of the dirtied array with IDs ::: ${array4.slice(45, 60)} :::`
     );
-  
+
     return array4;
   };
-  
+
   // define lower case and number confirmation function
-  
+
   const dataValidator = (element1) => {
     let isOnlyLetter = (str) => /^[A-Z]+$/i.test(str);
     let isOnlyNumber = (str) => /^\d+$/.test(str);
@@ -108,9 +181,9 @@ const statsCall = (currentData) => {
     }
     return 'dirty';
   };
-  
+
   // define the cleaning service function
-  
+
   const cleaningDirty = (array5) => {
     //only worked for me if I put everything within the return
     let result = array5.reduce(
@@ -135,12 +208,12 @@ const statsCall = (currentData) => {
     console.log(
       `This is part of the clean array with IDs ::: ${result.slice(45, 60)} :::`
     );
-  
+
     return result;
   };
-  
+
   // declare identifier removal function
-  
+
   const noMoreNums = (array8) => {
     let result2 = array8.reduce((resultArr, currElement) => {
       if (dataValidator(currElement) === 'word') {
@@ -156,9 +229,9 @@ const statsCall = (currentData) => {
     );
     return result2;
   };
-  
+
   //Are there three letter words?
-  
+
   const areThereShort = (array6) => {
     return array6.some((element) => {
       const type = dataValidator(element);
@@ -170,7 +243,7 @@ const statsCall = (currentData) => {
       return false; // Continue to next element
     });
   };
-  
+
   const areThereShortMsg = (booleament) => {
     let msg = '';
     if (booleament === true) {
@@ -185,9 +258,9 @@ const statsCall = (currentData) => {
       '------------------------------------------------------------------------------------------------------------------------------------------------------'
     ); //spacer
   };
-  
+
   // define 3 letters removal function
-  
+
   const threeLettersNot = (array7) => {
     let result3 = array7.reduce((resultingArray, currentElement) => {
       if (currentElement.length > 3) {
@@ -203,9 +276,9 @@ const statsCall = (currentData) => {
     );
     return result3;
   };
-  
+
   // declare the 9 letter word finder function
-  
+
   const getNineLetterWords = (words) => {
     const longWords = words.filter((word) => word.length > 9);
     let randIndax = Math.floor(Math.random() * longWords.length - 2);
@@ -215,7 +288,7 @@ const statsCall = (currentData) => {
     );
     return result4;
   };
-  
+
   //declare the word to array of characters to ascii function
   
   const toAscci = (twoRem) => {
@@ -254,7 +327,6 @@ const statsCall = (currentData) => {
   //declare the main program to run this show
   
   function main() {
-    let currentArray1 = [];
   
     starterF();
   
@@ -296,5 +368,4 @@ const statsCall = (currentData) => {
     enderF(wordPowerLevel, onlyNine);
   }
   
-  main();
   
