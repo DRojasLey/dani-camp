@@ -13,6 +13,9 @@ const arrayLengthReport = document.getElementById('ArrLengthRport');
 const arrayWordsList = document.getElementById('arrayWords')
 const startBtn = document.getElementById('startBtn');
 const listOfActions = document.getElementById('listOfActions');
+const prevActionReportBlock = document.createElement('li');
+const prevActionText = document.createElement('p');
+const nextActionButton = document.createElement('button');
 
 // word list adding function:
 // this function should take the Current array slice a portion of the array
@@ -40,10 +43,7 @@ function arrayLengthRep(currentData){
 
 //function to add the first action report
 
-function reportPrevAction(ActionTextReport = 'No previous report provided', nextAction){
-    const prevActionReportBlock = document.createElement('li');
-    const prevActionText = document.createElement('p');
-    const nextActionButton = document.createElement('button');
+function reportPrevAction(ActionTextReport = 'No previous report provided'){
     prevActionReportBlock.setAttribute('class', 'action');
     prevActionText.setAttribute('class', 'ActionText');
     nextActionButton.setAttribute('class', 'nextBtn');
@@ -51,10 +51,7 @@ function reportPrevAction(ActionTextReport = 'No previous report provided', next
     prevActionReportBlock.appendChild(nextActionButton);
     prevActionText.innerText = `${ActionTextReport}`
     nextActionButton.innerText= 'Next'
-    currentArray1 = nextAction
-    nextActionButton.addEventListener('click', nextAction)
     listOfActions.appendChild(prevActionReportBlock);
-
 };
 
 //This starts the game after the click on start
@@ -66,6 +63,7 @@ function startGame(){
   arrayLengthRep(dictionary);
   starterF()
   reportPrevAction(reportMsgs.startMsg, dupRemoval(dictionary))
+  nextActionButton.addEventListener('click', )
   addWordsToReport(currentArray1);
 
 
