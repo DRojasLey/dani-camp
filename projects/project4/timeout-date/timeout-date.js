@@ -7,6 +7,7 @@ const startAtElemnt = document.createElement('h4');
 const finishAtElemnt = document.createElement('h4');
 const instrucBlock = document.createElement('section');
 const consoleEmuBlock = document.createElement('section');
+
 // This is the main object for messages and variables
 
 let mainObj = {
@@ -21,6 +22,7 @@ let mainObj = {
     finalDate: new Date
 }
 
+//function no longer needed on the graphical version, left as legacy reference
 
 /* Will ask the user to input the minutes:
 stores the minutes as an int between 1 - 10 in the main object
@@ -44,6 +46,9 @@ stores the minutes as an int between 1 - 10 in the main object
 goBtn.addEventListener('click', getUserInput )
 
 
+//The click will set in motion most of the events:
+//starting the countdown, calling the timeout, changing the main block
+
 function getUserInput(){
     const userMinutes = selectElemnt.value;
     mainObj.givenMinutes += +userMinutes;
@@ -51,9 +56,15 @@ function getUserInput(){
     let startAt = getStartingTime();
     convertTheDate(mainObj.givenMinutes)
     let time = convertToMill(mainObj.givenMinutes);
-    let finishAt= onlyTime; 
+    let finishAt= onlyTime;
     setTimeout(pyramid, time);
     console.log(mainObj.givenMinutes)
+    changeBlockInMain(finishAt, startAt);
+};
+
+//DOM  changing to the second stage
+
+function changeBlockInMain(finishAt, startAt){
     mainBlock.innerHTML = '';
     finishAtElemnt.setAttribute('class' ,'instructions')
     finishAtElemnt.innerText = mainObj.message2 + finishAt.toTimeString().split(' ')[0];
@@ -63,9 +74,7 @@ function getUserInput(){
     instrucBlock.setAttribute('class', 'instructionsBlock')
     instrucBlock.appendChild(startAtElemnt)
     mainBlock.appendChild(instrucBlock);
-
-
-};
+}
 
 /* Will console log the current time to the console and stores it in the main object:
 */
@@ -84,8 +93,10 @@ function convertToMill(minutes){
 };
 
 /* This is the function that setTimeOut will call:
+creates an emulated 'console' section
 it takes the number the user provides and gives it to a loop
-the loop will print to the console # symbols as half a pyramid
+the loop will print to the emulated console # symbols as half a pyramid
+will create a button from scratch to start over again
 */
 
 function pyramid(numOfMinutes = mainObj.givenMinutes){
@@ -127,17 +138,19 @@ function convertTheDate(theMinutes){
 
 };
 
+//this function is no longer needed, left on the code as reference 
+
 /* This will initialize the setTimeout call and will print in console the expected time
 Expected time will be the time we previously stored in the object + the minutes
 */
 
-function condenser(){
-    getUserInput();
-    getStartingTime(mainObj.givenMinutes);
-    let time = convertToMill(mainObj.givenMinutes);
-    setTimeout(pyramid, time);
-    console.log(` ${mainObj.message5} ${mainObj.givenMinutes} ${mainObj.minWord}`);
-    convertTheDate(mainObj.givenMinutes);
-    console.log(mainObj.message3 + mainObj.finalDate);
-};
+// function condenser(){
+//     getUserInput();
+//     getStartingTime(mainObj.givenMinutes);
+//     let time = convertToMill(mainObj.givenMinutes);
+//     setTimeout(pyramid, time);
+//     console.log(` ${mainObj.message5} ${mainObj.givenMinutes} ${mainObj.minWord}`);
+//     convertTheDate(mainObj.givenMinutes);
+//     console.log(mainObj.message3 + mainObj.finalDate);
+// };
 
