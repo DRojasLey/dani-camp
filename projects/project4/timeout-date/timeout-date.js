@@ -1,3 +1,12 @@
+//DOM Variable declarations:
+
+const mainBlock = document.getElementById('mainBlock');
+const selectElemnt = document.getElementById('minutes');
+const goBtn = document.getElementById('goBtn');
+const startAtElemnt = document.createElement('h4');
+const finishAtElemnt = document.createElement('h4');
+const instrucBlock = document.createElement('section');
+const consoleEmuBlock = document.createElement('section');
 // This is the main object for messages and variables
 
 let mainObj = {
@@ -16,26 +25,54 @@ let mainObj = {
 /* Will ask the user to input the minutes:
 stores the minutes as an int between 1 - 10 in the main object
 */
+// //function getUserInput(){
+//     let minutes;
+
+//     do {
+//         minutes = prompt(mainObj.message1);
+//         if (isNaN(minutes) || minutes < 1 || minutes > 10) {
+//             alert("Error, please only introduce a maximum of 10 minutes. Try again.");
+//             minutes = null;// make it falsy for the while
+//         }
+//     } while (!minutes);
+
+//     mainObj.givenMinutes += +minutes;
+//};
+
+//This will replace the old input, it does not require user data validation as we are using a select instead
+
+goBtn.addEventListener('click', getUserInput )
+
+
 function getUserInput(){
-    let minutes;
+    const userMinutes = selectElemnt.value;
+    mainObj.givenMinutes += +userMinutes;
+    let onlyTime = mainObj.finalDate;
+    let startAt = getStartingTime();
+    convertTheDate(mainObj.givenMinutes)
+    let time = convertToMill(mainObj.givenMinutes);
+    let finishAt= onlyTime; 
+    setTimeout(pyramid, time);
+    console.log(mainObj.givenMinutes)
+    mainBlock.innerHTML = '';
+    finishAtElemnt.setAttribute('class' ,'instructions')
+    finishAtElemnt.innerText = mainObj.message2 + finishAt.toTimeString().split(' ')[0];
+    instrucBlock.appendChild(finishAtElemnt)
+    startAtElemnt.setAttribute('class' ,'instructions')
+    startAtElemnt.innerText = mainObj.message3 + startAt.toTimeString().split(' ')[0];
+    instrucBlock.setAttribute('class', 'instructionsBlock')
+    instrucBlock.appendChild(startAtElemnt)
+    mainBlock.appendChild(instrucBlock);
 
-    do {
-        minutes = prompt(mainObj.message1);
-        if (isNaN(minutes) || minutes < 1 || minutes > 10) {
-            alert("Error, please only introduce a maximum of 10 minutes. Try again.");
-            minutes = null;// make it falsy for the while
-        }
-    } while (!minutes);
 
-    mainObj.givenMinutes += +minutes;
 };
-
 
 /* Will console log the current time to the console and stores it in the main object:
 */
 function getStartingTime(){
     mainObj.startingDate = new Date();
-    console.log(mainObj.message2 + ' ' + mainObj.startingDate.toTimeString());
+    let onlyTime = mainObj.startingDate;
+    return onlyTime
 };
 
 /* Will return the minutes as miliseconds that we will use for set timeout */
@@ -52,10 +89,28 @@ the loop will print to the console # symbols as half a pyramid
 */
 
 function pyramid(numOfMinutes = mainObj.givenMinutes){
+    let arrToPrint = [];
+
+    mainBlock.innerHTML = '';
+    consoleEmuBlock.setAttribute('class', 'consoleEmuBlock');
+    mainBlock.appendChild(consoleEmuBlock)
     for (let index = 0; index < numOfMinutes; index++) {
-        console.log('#'.repeat(index + 1));
+        arrToPrint.push('#'.repeat(index + 1))
     }
-    console.log(mainObj.message4)
+    arrToPrint.forEach(element => {
+        const printToEmu = document.createElement('p')
+        printToEmu.innerText = '>' + element ;
+        consoleEmuBlock.appendChild(printToEmu)
+    });
+    const printToEmu2 = document.createElement('p')
+    printToEmu2.innerText = mainObj.message4
+    consoleEmuBlock.appendChild(printToEmu2)
+
+    const returnBtn = document.createElement('button')
+    returnBtn.setAttribute('class', 'goBtn');
+    returnBtn.innerText = 'Again'
+    returnBtn.addEventListener('click', () => window.location.reload())
+    mainBlock.appendChild(returnBtn)
 };
 
 /*This will take the starting date and add the minutes to the date:
@@ -66,6 +121,7 @@ and will be printed for the user to know when the piramid will be created
 function convertTheDate(theMinutes){
     const startTime = mainObj.startingDate
     let origMinutes = startTime.getMinutes()
+    console.log(origMinutes)
     startTime.setMinutes(theMinutes + origMinutes)
     mainObj.finalDate = startTime.toTimeString()
 
@@ -85,4 +141,3 @@ function condenser(){
     console.log(mainObj.message3 + mainObj.finalDate);
 };
 
-condenser()

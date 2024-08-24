@@ -1,0 +1,116 @@
+body{
+    background-color: #D6D3F0;
+}
+
+p {
+    margin: 0%;
+}
+
+.titleBlock {
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 10px;
+    color: #0F5257;
+    display: flex;
+    flex-direction: column;
+    margin: 5% 0 0 0;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.mainTitle {
+    font-size: 40px;
+    margin: 0;
+    text-shadow: 5px 3px #ffffff;
+    font-weight: 400;
+
+}
+
+.mainBlock {
+    border: #0B3142;
+    border-style: solid;
+    border-width: 1px;
+    margin: 5% 35%;
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+}
+
+.instructionsBlock {
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+.consoleEmuBlock {
+    background-color: #0B3142;
+    color: #00FF33;
+    display: flex;
+    justify-content: flex-start;
+    padding: 10%;
+    font-size: 25px;
+    flex-direction: column;
+}
+
+.instructions {
+    color: #0B3142;
+    font-size: 45px;
+
+}
+
+.interactiveBlock {
+    display: flex;
+    flex-direction: column;
+    margin: 5% 30%;
+}
+
+.selectBlock {
+    display: flex;
+    flex-direction: column;
+    margin: 5% 30% 10%;
+}
+
+.goBtn {
+	background-color:#0b3142;
+	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:27px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.goBtn:hover {
+	background-color:#5cbf2a;
+}
+.goBtn:active {
+	position:relative;
+	top:1px;
+}
+
+a {
+    color: #0b3142;
+}
+
+.footerLink {
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    justify-items: center;
+}
+
