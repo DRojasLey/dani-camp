@@ -33,20 +33,20 @@ ul {
     font-size: 7.5rem;
     margin: 0;
     padding: 0;
-    text-shadow: 5px 2px 5px #305dda;
+    text-shadow: 5px 2px 5px #00FF33;
 
 }
 
 .backgroundElement {
     margin: 0 10%;
-    box-shadow:  10px 0px 15px 0px #305dda, -20px 0px 15px 0px #305dda, 20px 0px 15px 0px #305dda, -10px 0px 15px 0px #305dda ;
+    box-shadow:  10px 0px 15px 0px #00FF33, -20px 0px 15px 0px #00FF33, 20px 0px 15px 0px #00FF33, -10px 0px 15px 0px #00FF33 ;
     background-color: #34393e;
     display: flex;
     padding: 3%;
 }
 
 .mainInteractive {
-    background-color: #565964;
+    background-color: #191b1c;
     margin: 0 1.5% 0 0;
     flex-basis: 100%;
     padding: 3%;
@@ -147,7 +147,7 @@ ul {
     font-weight: 400;
     font-style: normal;
     align-self: flex-start;
-    font-size: 25px;
+    font-size: 15px;
 }
 
 .startText{
@@ -170,6 +170,17 @@ ul {
     font-size: 20px;
 }
 
+.arrayWordsContainer{
+    background-color: #191b1c;
+    color: #00FF33;
+    padding: 10%;
+    margin: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 .ArrLengthRport{
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
@@ -182,7 +193,7 @@ ul {
 
 
 .arrayStateSection {
-    background-color: #565964;
+    background-color: #191b1c;
     margin: 0 0 0 1.5%;
     padding: 5%;
     flex-basis: 100%;
