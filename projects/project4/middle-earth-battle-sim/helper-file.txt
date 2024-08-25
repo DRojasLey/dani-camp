@@ -1,0 +1,67 @@
+Single page application 
+
+Fonts:
+
+https://fonts.google.com/specimen/Mingzat?preview.text=colombia&query=mi
+Hobbiton BrushhandHobbiton brush webkit downloaded
+
+Small popup element will give the user the option to start
+
+we  will start the tale  with the original alerts as fade away lines in hobbiton font in a book
+
+Then we will show the first option, age as 4 vertical images, hovering would have a sound
+
+Backround will change depending on the selection from the user
+
+The first background should be one of paper from a book 
+
+1st option is Age we should present this as 4 images with something representative of the age,
+
+Two images each, the default state should be the night image with a corresponding evil race and low visibility
+
+Once hovered on, the image should change to the day one with the good side race fully visible
+
+1. Elves/dwarves, balrog related>  the two trees should also be visible
+2. Dunedain, orc related > the moon and the sun should be visible
+3. Hobbits related, goblins related > during night and day the ring should be visible night Sauron eye
+	day
+4. Lesser men, at day gondorian soldiers, 
+
+
+The second option will then come location:
+same as before the images will change 
+
+1. South [Gondor, Mordor, Rohan
+2.  North [Arnor, Angmar]   
+3. West [Eriador,Blue Mntns, Forlindon]
+4. East [Mirkwood, Erebor, Misty Mntns]
+
+The third option will be the valar 
+
+1.Manwë (King of arda)
+2.Melkor (Morgoth)
+3.Aulë (Dwarves)
+4.Varda (stars)
+5.Oromë (Hunter)
+6.Námo (Mandos)
+7.Estë
+8.Lórien
+
+Depending on the selection of the user will will create a background image:
+
+for example if the first age is selected we will use the night background with reduced opacity
+that image should the main races of the age to the left hand side
+then in top of that we will add a location image, also with reduced opacity of the location, for example south, will have minas tirith and mordor, thii should be a background location to the middle left hand side of the page, and a right-hand side corner 
+finaly the image of the selected valar will go to the top right corner looking at the middle of the page 
+
+that background will be the main place to show the history
+
+we will add the simulation results here, 
+
+Finally there should be a menu to start again, that shows the scores as well
+
+
+
+
+
+
