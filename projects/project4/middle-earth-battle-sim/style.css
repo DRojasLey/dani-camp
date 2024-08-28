@@ -1,0 +1,111 @@
+body {
+    background-color: #1d1d1d;
+}
+
+
+@font-face {
+    font-family: "middleEarth";
+    src: url("./fonts/middleearth-font/Middleearth-ao6m.ttf");
+}
+
+@font-face {
+    font-family: "hobbiton";
+    src: url("./fonts/hobbiton/HobbitonBrushhandhobbitonBrush-WygA.ttf");
+}
+
+@font-face {
+    font-family: "elven";
+    src: url("./fonts/elven-common-speak-font/Elvencommonspeak-0WXz.ttf");
+}
+
+@font-face {
+    font-family: "ringbearer";
+    src: url("./fonts/ringbearer-font/RingbearerMedium-51mgZ.ttf");
+}
+
+
+@media (max-width: 768px) {
+    .mainBlock {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+
+    }
+
+    .storyText{
+        font-family: 'hobbiton', Arial, sans-serif;
+        font-weight: 400;
+        font-size: 40px;
+        margin: 55% 20% 0 20%;
+        text-align: center;
+    }
+
+    .startBlock {
+        display: flex;
+        background-image: url('./images/UI/cool-to-add.png');
+        height: 1300px;
+        width: 768px;
+        margin-top: 7%;
+        flex-direction: column;
+        background-size: cover;
+    }
+
+    .startbutton {
+        border: none;
+        background: scroll;
+        cursor: pointer;
+        color: #FFFFFF; /* Change the text color as needed */
+        font-size: 16px; /* Adjust the font size */
+        padding: 10px 20px; /* Add padding for spacing */
+        margin:  80% 20% 30% 23%;
+        font-size: 90px;
+        font-family: 'ringbearer', Arial, sans-serif;
+        font-weight:normal;
+        font-style:normal;
+        background: -webkit-linear-gradient(#22AEDF, #EA5725);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .button1 {
+        border: none;
+        background: scroll;
+        cursor: pointer;
+        color: #FFFFFF; /* Change the text color as needed */
+        font-size: 16px; /* Adjust the font size */
+        padding: 10px 20px; /* Add padding for spacing */
+        margin:  5% 20% 30% 23%;
+        font-size: 24px;
+        font-family: 'middleEarth', Arial, sans-serif;
+        font-weight:normal;
+        font-style:normal;
+        background: -webkit-linear-gradient(#fff, #000);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .nextButton {
+        border: none;
+        background: scroll;
+        cursor: pointer;
+        color: #FFFFFF; /* Change the text color as needed */
+        font-size: 16px; /* Adjust the font size */
+        padding: 10px 20px; /* Add padding for spacing */
+        margin:  80% 20% 30% 23%;
+        font-size: 90px;
+    }
+    .ageBackground{
+        background-size: contain;
+    }
+
+    .valarBackgroundContainer{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .ageBackgroundContainer{
+        display: flex;
+        flex-direction: row-reverse;
+    }
+}

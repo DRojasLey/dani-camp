@@ -25,4 +25,3 @@ const main = () => {
     msg.getResultMsg(aDate, +input[0], badArmy, gudArmy, winner, loser)
 
 };
-main();

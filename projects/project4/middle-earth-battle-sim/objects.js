@@ -123,7 +123,7 @@ const races = {
         location: 'east',
         _population: [0.2, 0.2, 0.2, 0.5]
     },
-    
+
     getPopulation: function(raceName, cardinal) {
         return this[raceName]._population[cardinal-1];
     },
@@ -195,7 +195,7 @@ window.ages = ages;
 /* Messages and method used for interacting with the user */
 
 const msg = {
-    initialMsg: [`Very few are given the power to control the fate of middle earth...`,
+    initialMsg: [`Very few are given the \n power to control \n the fate of \n middle earth...`,
         `luckily, you are one of them`,
         `your decisions will affect the future of a decisive battle between the forces of good and evil, light and darkness`,
         `please let us know, what the future brings:`,
@@ -218,8 +218,7 @@ const msg = {
           alert(messages[0])
           alert(messages[1])
           winner === loser ? alert(messages[3]) : alert(messages[2]);
-        },
-    calculatingMsg: []
+        }
     }
 window.msg = msg;
 

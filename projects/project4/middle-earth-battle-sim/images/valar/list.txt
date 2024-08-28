@@ -1,0 +1,17 @@
+Aulë-back.jpg
+Aulë-no-background.png
+estë-back.png
+estë-no-back.png
+Irmo-back.png
+Irmo-no-back.png
+list.txt
+manwe-back.jpg
+manwe-no-back.png
+melkor-back.jpg
+melkor-no-back.png
+Námo-back.jpg
+Námo-no-back.png
+Oromë-back.jpg
+Oromë-no-back.png
+Varda-back.png
+varda-no-back.png

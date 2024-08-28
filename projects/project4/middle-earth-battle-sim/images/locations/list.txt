@@ -1,0 +1,13 @@
+east-battle.jpeg
+east-day.jpg
+east-night.png
+list.txt
+north-battle.jpeg
+north-day.png
+north-night.png
+south-battle.png
+south-day.jpg
+south-night.jpg
+west-battle.jpeg
+west-day.png
+west-night.png

@@ -1,3 +1,155 @@
+//DOM definitions
+const body = document.getElementById('body')
+const mainBlock = document.getElementById('mainBlock');
+const startBlock = document.getElementById('startBlock');
+const storyText = document.createElement('h2');
+const startButton = document.getElementById('startbutton');
+const button1 = document.createElement('button');
+const nextButton = document.createElement('button');
+const ageBackground = document.createElement('div')
+const valarBackground = document.createElement('div')
+const ageBackgroundContainer = document.createElement('div')
+const valarBackgroundContainer = document.createElement('div')
+
+//global variables definitions:
+let actionCounter = 0;
+
+// data type checking function
+
+function checkData(input){
+    return `received ${input} as input which data type is ${typeof input}`;
+}
+
+//start screen functionality:
+// just needs to add the first event listener to the index button
+function startSection(){
+    startButton.setAttribute('onclick', );
+};
+
+startSection();
+
+
+// creates the backgrounds for each step
+//takes the action counter to determine the correct backgroun image
+// takes the input user array to generate the story background dinamically
+
+function setMainSpace(actionCounter, userInputArray){
+    console.log("setMainSpace data report action Counter" + checkData(actionCounter));
+    console.log("setMainSpace data report userinput array" + checkData(userInputArray));
+    if (actionCounter >= 2 && actionCounter < 6 ){
+        startButton.style.display = 'none';
+        body.style.backgroundImage = "url('./images/UI/wood-grain-nails-compressed.jpg')";
+        startBlock.style.backgroundImage = "url('./images/UI/paper-background.jpeg')";
+    } else if (actionCounter >= 6 && actionCounter < 9 ){
+        body.style.backgroundImage = "";
+        body.style.backgroundColor = "#1d1d1d";
+        startBlock.style.backgroundImage = "url('./images/UI/paper-background.jpeg')";
+    } else if (actionCounter >= 9 && actionCounter < 13 ){
+        body.style.backgroundImage = "url('./images/UI/wood-grain-nails-compressed.jpg')";
+        startBlock.style.backgroundImage = "url('./images/UI/paper-background.jpeg')";
+    } else if (actionCounter >= 13){
+        //age icon
+        switch (userInputArray[0]) {
+            case 1:
+                ageBackground.style.backgroundImage = "url('./images/ages/silmarils-no-back.png')";
+                break;
+            case 2:
+                ageBackground.style.backgroundImage = "url('./images/ages/numenor-no-back.png')";
+                break;
+            case 3:
+                ageBackground.style.backgroundImage = "url('./images/ages/theone-no-back.png')";
+                break;
+            case 4:
+                ageBackground.style.backgroundImage = "url('./images/ages/crown-no-back.png')";
+                break;
+            default:
+                console.log('Age input is not valid for a background')
+        }
+        // make sure the age icon is contained on the div
+        ageBackground.setAttribute('class', 'ageBackground');
+        //valar image
+        switch (userInputArray[2]) {
+            case 1:
+                valarBackground.style.backgroundImage = "url('./images/valar/manwe-no-back.png')";
+                break;
+            case 2:
+                valarBackground.style.backgroundImage = "url('./images/valar/melkor-no-back.png')";
+                break;
+            case 3:
+                valarBackground.style.backgroundImage = "url('./images/valar/Aulë-no-background.png')";
+                break;
+            case 4:
+                valarBackground.style.backgroundImage = "url('./images/valar/varda-no-back.png')";
+                break;
+            case 5:
+                valarBackground.style.backgroundImage = "url('./images/valar/Oromë-no-back.png')";
+                break;
+            case 6:
+                valarBackground.style.backgroundImage = "url('./images/valar/Námo-no-back.png')";
+                break;
+            case 7:
+                valarBackground.style.backgroundImage = "url('./images/valar/estë-no-back.png')";
+                break;
+            case 8:
+                valarBackground.style.backgroundImage = "url('./images/valar/Irmo-no-back.png')";
+                break;
+            default:
+                console.log('valar input is not valid for a background')
+        }
+     // make sure the age icon is contained on the div
+     valarBackground.style.backgroundSize = 'contain';
+
+        //main background based on the location
+                switch (userInputArray[1]) {
+            case 1:
+                body.style.backgroundImage = "url('./images/locations/south-battle.png')";
+                break;
+            case 2:
+                body.style.backgroundImage = "url('./images/locations/north-battle.jpeg')";
+                break;
+            case 3:
+                body.style.backgroundImage = "url('./images/locations/west-battle.jpeg')";
+                break;locations
+            case 4:
+                body.style.backgroundImage = "url('./images/locations/east-battle.jpeg')";
+                locationsreak;
+            default:
+                console.log('Location input is not valid for a background')
+        }
+        //TODO: to set the correct location of the image on the body background we should use the position attribute here as well
+        ageBackgroundContainer.setAttribute('class', 'ageBackgroundContainer')
+        body.appendChild(ageBackgroundContainer);
+        ageBackgroundContainer.appendChild(ageBackground);
+        valarBackgroundContainer.setAttribute('class', 'valarBackgroundContainer')
+
+        body.appendChild(valarBackgroundContainer);
+        valarBackgroundContainer.appendChild(valarBackground);
+    }
+
+};
+
+
+//Message fabrication button:
+//should take:
+//a message ID as a string or variable containing it
+//a function name that we will assign to the button event listener
+//the parameters of the function we will be using
+
+function createMessage(messageID, actionCounter, userInputArray){
+    console.log("createMessage data messageID" + checkData(messageID));
+    console.log("createMessage data actionCounter" + checkData(actionCounter));
+    console.log("createMessage data userInputArray" + checkData(userInputArray));
+
+    setMainSpace(actionCounter, userInputArray)
+    //put the message inside the h2
+    storyText.innerText = messageID
+    button1.innerText = 'continue...'
+    button1.setAttribute('class', 'button1');
+    storyText.setAttribute('class', 'storyText')
+    startBlock.appendChild(storyText)
+    startBlock.appendChild(button1)
+};
+
 /* Declares the input request from the user,
 performs data validation on the numbers
 returns an array of 3 numbers for each selection:
