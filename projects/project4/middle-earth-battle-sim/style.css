@@ -40,7 +40,7 @@ input[type="radio"] {
         font-family: 'hobbiton', Arial, sans-serif;
         font-weight: 400;
         font-size: 40px;
-        margin: 55% 20% 0 20%;
+        margin: 50% 20% 0 20%;
         text-align: center;
     }
 
@@ -83,15 +83,48 @@ input[type="radio"] {
         border: none;
         background: scroll;
         cursor: pointer;
-        color: #FFFFFF; /* Change the text color as needed */
-        font-size: 16px; /* Adjust the font size */
-        padding: 10px 20px; /* Add padding for spacing */
+        color: #FFFFFF;
+        font-size: 16px;
+        padding: 10px 20px;
         margin:  5% 20% 30% 23%;
         font-size: 24px;
         font-family: 'middleEarth', Arial, sans-serif;
         font-weight:normal;
         font-style:normal;
         background: -webkit-linear-gradient(#fff, #000);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .button2 {
+        border: none;
+        background: scroll;
+        cursor: pointer;
+        color: #FFFFFF;
+        font-size: 16px;
+        padding: 10px 20px;
+        margin:  5% 20% 15% 23%;
+        font-size: 24px;
+        font-family: 'middleEarth', Arial, sans-serif;
+        font-weight:normal;
+        font-style:normal;
+        background: -webkit-linear-gradient(#ff0000, #ff0000);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .button2:hover {
+        border: none;
+        background: scroll;
+        cursor: pointer;
+        color: #FFFFFF;
+        font-size: 16px;
+        padding: 10px 20px;
+        margin:  5% 20% 15% 23%;
+        font-size: 24px;
+        font-family: 'middleEarth', Arial, sans-serif;
+        font-weight:normal;
+        font-style:normal;
+        background: -webkit-linear-gradient(#000, #000);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -106,17 +139,37 @@ input[type="radio"] {
         margin:  80% 20% 30% 23%;
         font-size: 90px;
     }
-    .ageBackground{
+    .ageBackground {
         background-size: contain;
     }
 
-    .valarBackgroundContainer{
+    .valarBackgroundContainer {
         display: flex;
         flex-direction: row;
     }
 
-    .ageBackgroundContainer{
+    .ageBackgroundContainer {
         display: flex;
         flex-direction: row-reverse;
+    }
+    .inputContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        justify-content: center;
+        margin-top: 5%;
+    }
+    label {
+        margin-top: 2%;
+    }
+    .selectedImg {
+        display: inline-block;
+        background-color: #000;
+        border: 3px solid #000;
+        position: relative;
+    }
+    input[type="radio"]:checked ~ .selectedImg {
+        border-color: #FFD700; /* Yellow border on click */
     }
 }

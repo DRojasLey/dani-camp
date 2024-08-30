@@ -200,17 +200,8 @@ const msg = {
         `your decisions will affect the future of a decisive battle between the forces of good and evil, light and darkness`,
         `please let us know, what the future brings:`,
         `In what age is the battle taking place?`,
-        `Where is your battle going to happen? \n 1. South \n 2. North  \n 3. West \n 4. East ) `,
-        `What Valar is observing?
-                  (only numbers)
-                    1.Manwë (King of arda)
-                    2.Melkor (Morgoth)
-                    3.Aulë (Dwarves)
-                    4.Varda (stars)
-                    5.Oromë (Hunter)
-                    6.Námo (Mandos)
-                    7.Estë
-                    8.Lórien `],
+        `Where is your battle going to happen?`,
+        `What Valar is observing?`],
     getResultMsg: function(aDate, age, badArmy, gudArmy, winner, loser){
         let messages =[`It was the year ${aDate.getFullYear()} in the month ${aDate.getMonth()} in the day ${aDate.getDate()} from the ${age} age, when the armies of darkness, counting ${badArmy} worth, rose upon all the good there is in the land.`,
         `to face this challenge, the council at Rivendel called for an army, ${gudArmy} strong assembled for battle in the fields of Middle Earth to face the enemy.`,

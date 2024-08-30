@@ -4,7 +4,6 @@ const mainBlock = document.getElementById('mainBlock');
 const startBlock = document.getElementById('startBlock');
 const storyText = document.createElement('h2');
 const startButton = document.getElementById('startbutton');
-const continueButton = document.createElement('button');
 const nextButton = document.createElement('button');
 const ageBackground = document.createElement('div')
 const valarBackground = document.createElement('div')
@@ -13,107 +12,40 @@ const valarBackgroundContainer = document.createElement('div')
 const selectionContainer = document.createElement('div');
 const inputContainer = document.createElement('div');
 
-//global variables definitions:
-let userinput = [0 , 0 , 0];
-let actionCounter = 0;
-
-//start screen functionality:
-// just needs to add the first event listener to the index button
-function startSection(){
-    userinput = userinput
-    startButton.setAttribute('onclick', 'firstAction(userinput)' );
-};
-startSection();
-
-function firstAction(userinput) {
-    setMainSpace(1, userinput);
-    createMessage(msg.initialMsg[0], 1, userinput);
-    continueButton.addEventListener('click', () => {
-        console.log('first action click')
-        nextStep(msg.initialMsg[1])});
-};
 
 
-// data type checking function
-
+/**
+ * Console
+ * @param {any} input
+ * @returns string with data type
+ */
 function checkData(input){
-    return `received ${input} as input which data type is ${typeof input}`;
+    return `input: ${input} is typeof is ${typeof input}`;
 }
 
-//Adding action function
-
-function nextStep(msgf){
-    continueButton.removeEventListener('click', () => {
-        console.log('first action click')
-        nextStep(msg.initialMsg[1])});    // console.log("nextStep data check actionCounter ::" + checkData(actionCounter));
-    // console.log("nextStep data check msgf ::" + checkData(msgf));
-    console.log(actionCounter)
-    setMainSpace(actionCounter + 1)
-    createMessage(msgf, actionCounter + 1)
-    if (actionCounter === 0){
-        continueButton.addEventListener('click', () => {
-            console.log('second action click')
-             nextStep(msgf)});
-    }else if (actionCounter === 1){
-        console.log(actionCounter)
-        continueButton.removeEventListener('click', () => {
-            console.log('second action click');
-             nextStep(msgf)});
-        console.log('if (actionCounter === 1)')
-        continueButton.addEventListener('click', () => {
-            console.log('third action click');
-            nextStep(msg.initialMsg[2])});
-    } else if (actionCounter ===2){
-        console.log(actionCounter)
-        console.log('} else if (actionCounter ===2){')
-        continueButton.removeEventListener('click', () => {
-            console.log('third action click');
-             nextStep(msg.initialMsg[2])});
-        continueButton.addEventListener('click', () => {
-            console.log('fourth action click')
-             nextStep(msg.initialMsg[3])});
-    } else if (actionCounter === 3){
-        console.log('} else if (actionCounter === 4){')
-        console.log('ESTA ES LA COSA')
-        mainBlock.style.backgroundImage = "";
-        startBlock.style.display = 'none'
-        setMainSpace(actionCounter);
-        createMessage(msg.initialMsg[4], actionCounter)
-        CreateInput(4, 'ages');
-        continueButton.removeEventListener('click', () => {
-            console.log('fourth action click')
-             nextStep(msg.initialMsg[3])});
-        continueButton.addEventListener('click', captureSelection);
-    }
-    console.log('Si estamo` muriendo')
-    actionCounter++
-    console.log(actionCounter);
-}
-
-// creates the backgrounds for each step
-//takes the action counter to determine the correct backgroun image
-// takes the input user array to generate the story background dinamically
-
-function setMainSpace(actionCounter, userInputArray){
-    // console.log("setMainSpace data report actionCounter ::" + checkData(actionCounter));
-    // console.log("setMainSpace data report userinputarray ::" + checkData(userInputArray));
-    if (actionCounter >= 1 && actionCounter <= 4 ){
+/**
+ * @constructor Background
+ * @param {number} currentActionNumber
+ * @param {Array} userInputArray
+ */
+function setMainSpace(currentActionNumber, userInputArray){
+    if (currentActionNumber >= 1 && currentActionNumber <= 4 ){
         startButton.style.display = 'none';
         body.style.backgroundImage = "url('./images/UI/wood-grain-nails-compressed.jpg')";
         startBlock.style.backgroundImage = "url('./images/UI/paper-background.jpeg')";
-    } else if (actionCounter >= 5 && actionCounter < 9 ){
+    } else if (currentActionNumber >= 5 && currentActionNumber < 9 ){
         body.style.display = 'flex';
         body.style.flexDirection = 'column';
-        body.style.backgroundSize = 'cover';
+        body.style.backgroundSize = 'contain';
         body.style.backgroundRepeat = 'no-repeat'
         body.style.backgroundImage = "url('./images/UI/paper-background.jpeg')";
         mainBlock.style.backgroundImage = "";
         body.style.backgroundColor = "#1d1d1d";
-        startBlock.style.backgroundImage = "url('./images/UI/paper-background.jpeg')";
-    } else if (actionCounter >= 9 && actionCounter < 13 ){
+        startBlock.style.display ='none'
+    } else if (currentActionNumber >= 9 && currentActionNumber < 13 ){
         body.style.backgroundImage = "url('./images/UI/wood-grain-nails-compressed.jpg')";
         startBlock.style.backgroundImage = "url('./images/UI/paper-background.jpeg')";
-    } else if (actionCounter >= 13){
+    } else if (currentActionNumber >= 13){
         body.style.backgroundImage = "";
         mainBlock.style.backgroundImage = "";
         startBlock.style.display = 'none'
@@ -195,67 +127,83 @@ function setMainSpace(actionCounter, userInputArray){
     }
 };
 
-
-//Message fabrication button:
-//should take:
-//a message ID as a string or variable containing it
-//a function name that we will assign to the button event listener
-//the parameters of the function we will be using
-
-function createMessage(messageID, actionCounter, userInputArray){
-    // console.log("createMessage data messageID ::" + checkData(messageID));
-    // console.log("createMessage data actionCounter ::" + checkData(actionCounter));
-    // console.log("createMessage data userInputArray ::" + checkData(userInputArray));
-    if (actionCounter >= 1 && actionCounter <= 4){
-        setMainSpace(actionCounter, userInputArray)
-        //put the message inside the h2
-        storyText.innerText = messageID;
+/**
+ * create the exclusive button for each action
+ * @param {number} actionNumeral used to determine the correct button to add
+ */
+function createContinueBtn(actionNumeral) {
+    const continueButton = document.createElement('button');
+    if (actionNumeral >= 1 && actionNumeral <= 4){
         continueButton.innerText = 'continue...';
         continueButton.setAttribute('class', 'button1');
-        storyText.setAttribute('class', 'storyText');
-        startBlock.appendChild(storyText);
+        continueButton.setAttribute('id', 'button1');
         startBlock.appendChild(continueButton);
-    } else if (actionCounter >= 5 && actionCounter <= 7){
-        storyText.innerText= messageID;
-        storyText.setAttribute('class', 'inputText');
+    } else if (actionNumeral >= 5 && actionNumeral <= 7){
         continueButton.innerText = 'Select this and continue...';
-        continueButton.setAttribute('class', 'button1');
-        body.appendChild(storyText);
+        continueButton.setAttribute('id', 'button2');
+        continueButton.setAttribute('class', 'button2');
         body.appendChild(continueButton);
     };
 };
 
-//input fabricator function,
-//this may be called inside a bigger function
-// to create the input individually
+/** create a message to screen
+ * @constructor
+ * @param {string} messageID
+ */
+function createMessage(messageID, actionNumeral){
+    if (actionNumeral >= 1 && actionNumeral <= 4){
+        storyText.innerText = messageID;
+        storyText.setAttribute('class', 'storyText');
+        startBlock.appendChild(storyText);
+    } else if (actionNumeral >= 5 && actionNumeral <= 7){
+        storyText.innerText= messageID;
+        storyText.setAttribute('class', 'inputText');
+        body.appendChild(storyText);
+    };
+};
 
-function CreateInput(inputAmount, option){
-    console.log(inputAmount)
+
+/**
+ * create input elements
+ * @constructor
+ * @param {number} inputAmount how many radio are to be created
+ * @param {string} option the type of input we are creating, image folder name
+ *
+ * Will remove previous selections if they already exist
+ */
+function createInput(inputAmount, option){
+    if (inputContainer.firstChild){
+        inputContainer.innerHTML = '';
+    }
     for (let index = 1; index <= inputAmount; index++) {
-        selectionContainer.style.display = 'flex';
-        selectionContainer.style.flexDirection = 'column';
+        inputContainer.setAttribute('class' , 'inputContainer')
         const inputElement = document.createElement('input');
         const inputLabel = document.createElement('label');
         const inputImg = document.createElement('img');
         inputElement.type = 'radio';
         inputElement.value = index;
         inputElement.name = 'selection';
+        inputElement.setAttribute('id','my-radio')
+        inputImg.setAttribute('class', 'selectedImg')
         inputImg.src = `./images/${option}/${index}-mobile.jpeg`;
-        inputLabel.appendChild(inputImg);
         inputLabel.appendChild(inputElement);
+        inputLabel.appendChild(inputImg);
         inputContainer.appendChild(inputLabel);
-
     }
     selectionContainer.appendChild(inputContainer);
     body.appendChild(selectionContainer);
 };
 
-function captureSelection() {
+/**
+ *  Will capture the current selection from the user on click
+ * @param {number} numeral
+ */
+function captureSelection(numeral) {
     const selectedValue = document.querySelector('input[name="selection"]:checked').value;
-    userinput[0] = (selectedValue);
+    userinput[numeral] = selectedValue ;
 }
 
-/* Declares the input request from the user,
+/**Declares the input request from the user,
 performs data validation on the numbers
 returns an array of 3 numbers for each selection:
 [age:1-4, location: 1-4, valar: 1-8]
