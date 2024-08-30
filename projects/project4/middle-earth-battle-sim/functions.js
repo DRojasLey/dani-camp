@@ -12,17 +12,6 @@ const valarBackgroundContainer = document.createElement('div')
 const selectionContainer = document.createElement('div');
 const inputContainer = document.createElement('div');
 
-
-
-/**
- * Console
- * @param {any} input
- * @returns string with data type
- */
-function checkData(input){
-    return `input: ${input} is typeof is ${typeof input}`;
-}
-
 /**
  * @constructor Background
  * @param {number} currentActionNumber
@@ -33,7 +22,7 @@ function setMainSpace(currentActionNumber, userInputArray){
         startButton.style.display = 'none';
         body.style.backgroundImage = "url('./images/UI/wood-grain-nails-compressed.jpg')";
         startBlock.style.backgroundImage = "url('./images/UI/paper-background.jpeg')";
-    } else if (currentActionNumber >= 5 && currentActionNumber < 9 ){
+    } else if (currentActionNumber >= 5 && currentActionNumber < 8 ){
         body.style.display = 'flex';
         body.style.flexDirection = 'column';
         body.style.backgroundSize = 'contain';
@@ -42,15 +31,20 @@ function setMainSpace(currentActionNumber, userInputArray){
         mainBlock.style.backgroundImage = "";
         body.style.backgroundColor = "#1d1d1d";
         startBlock.style.display ='none'
-    } else if (currentActionNumber >= 9 && currentActionNumber < 13 ){
+    } else if (currentActionNumber >= 8 && currentActionNumber < 12 ){
+        selectionContainer ? selectionContainer.remove(selectionContainer) : console.log('already removed') ;
+        body.style.backgroundSize = 'contain';
+        body.style.backgroundRepeat = ''
         body.style.backgroundImage = "url('./images/UI/wood-grain-nails-compressed.jpg')";
+        startBlock.style.display = 'block';
         startBlock.style.backgroundImage = "url('./images/UI/paper-background.jpeg')";
-    } else if (currentActionNumber >= 13){
+    } else if (currentActionNumber >= 12){
+        storyText.style.color= '#ff0000'
         body.style.backgroundImage = "";
         mainBlock.style.backgroundImage = "";
         startBlock.style.display = 'none'
-        //age icon
-        switch (userInputArray[0]) {
+          //age icon
+        switch (+userInputArray[0]) {
             case 1:
             ageBackground.style.backgroundImage = "url('./images/ages/silmarils-no-back.png')";
             break;
@@ -69,7 +63,7 @@ function setMainSpace(currentActionNumber, userInputArray){
         // make sure the age icon is contained on the div
         ageBackground.setAttribute('class', 'ageBackground');
         //valar image
-        switch (userInputArray[2]) {
+        switch (+userInputArray[2]) {
             case 1:
             valarBackground.style.backgroundImage = "url('./images/valar/manwe-no-back.png')";
             break;
@@ -97,11 +91,10 @@ function setMainSpace(currentActionNumber, userInputArray){
             default:
             console.log('valar input is not valid for a background')
         }
-        // make sure the age icon is contained on the div
         valarBackground.style.backgroundSize = 'contain';
-
+        valarBackground.setAttribute('class', 'valarBackground')
         //main background based on the location
-        switch (userInputArray[1]) {
+        switch (+userInputArray[1]) {
             case 1:
             body.style.backgroundImage = "url('./images/locations/south-battle.png')";
             break;
@@ -117,6 +110,8 @@ function setMainSpace(currentActionNumber, userInputArray){
             default:
             console.log('Location input is not valid for a background')
         }
+        body.style.backgroundSize = '400%';
+        body.style.backgroundPositionX = '45%'
         //TODO: to set the correct location of the image on the body background we should use the position attribute here as well
         ageBackgroundContainer.setAttribute('class', 'ageBackgroundContainer')
         body.appendChild(ageBackgroundContainer);
@@ -143,7 +138,24 @@ function createContinueBtn(actionNumeral) {
         continueButton.setAttribute('id', 'button2');
         continueButton.setAttribute('class', 'button2');
         body.appendChild(continueButton);
-    };
+    } else if (actionNumeral >= 8 && actionNumeral <= 11){
+        continueButton.innerText = 'continue...';
+        continueButton.setAttribute('id', 'button2');
+        continueButton.setAttribute('class', 'button2');
+        startBlock.appendChild(continueButton);
+    } else if (actionNumeral >= 12 && actionNumeral < 16){
+        continueButton.innerText = 'continue...';
+        continueButton.style.color = '#ffffff';
+        continueButton.setAttribute('id', 'button2');
+        continueButton.setAttribute('class', 'button2');
+        mainBlock.appendChild(continueButton);
+    } else if (actionNumeral === 16){
+        continueButton.innerText = msg.getResultMsg(5);
+        continueButton.style.color = '#ffffff';
+        continueButton.setAttribute('id', 'button2');
+        continueButton.setAttribute('class', 'button2');
+        mainBlock.appendChild(continueButton);
+    }
 };
 
 /** create a message to screen
@@ -159,7 +171,15 @@ function createMessage(messageID, actionNumeral){
         storyText.innerText= messageID;
         storyText.setAttribute('class', 'inputText');
         body.appendChild(storyText);
-    };
+    } else if(actionNumeral >= 8 && actionNumeral <= 11) {
+        storyText.innerText = messageID;
+        storyText.setAttribute('class', 'storyText');
+        startBlock.appendChild(storyText);
+    } else if(actionNumeral >= 12) {
+        storyText.innerText = messageID;
+        storyText.setAttribute('class', 'storyText2');
+        mainBlock.appendChild(storyText);
+    }
 };
 
 
@@ -199,8 +219,13 @@ function createInput(inputAmount, option){
  * @param {number} numeral
  */
 function captureSelection(numeral) {
-    const selectedValue = document.querySelector('input[name="selection"]:checked').value;
-    userinput[numeral] = selectedValue ;
+    const selectedValue = document.querySelector('input[name="selection"]:checked');
+    if (selectedValue) {
+        userinput[numeral] = selectedValue.value;
+    } else {
+        userinput[numeral] = ' Undefined Again';
+    }
+    console.log(userinput);
 }
 
 /**Declares the input request from the user,
@@ -213,7 +238,7 @@ window.getUserInput = () => {
     alert(msg.initialMsg[1]);
     alert(msg.initialMsg[2]);
     alert(msg.initialMsg[3]);
-    
+
     let eons;
     let location;
     let valar;
@@ -225,7 +250,7 @@ window.getUserInput = () => {
             eons = null;// make it falsy for the while
         }
     } while (!eons);
-    
+
     do {
         location = prompt(msg.initialMsg[5]);
         if (isNaN(location) || location < 1 || location > 4) {
@@ -233,7 +258,7 @@ window.getUserInput = () => {
             location = null;
         }
     } while (!location);
-    
+
     do {
         valar = prompt(msg.initialMsg[6]);
         if (isNaN(valar) || valar < 1 || valar > 8) {
@@ -245,11 +270,11 @@ window.getUserInput = () => {
     return [eons, location, valar];
 };
 
-/*Generates an array of random numbers that correspond to the races in the battle
-applies all buff or debuffs on the race numbers depending on location, blessing and age
+/** Generate the numbers of the army randomly
+ * @constructor
+ * @returns array with a number corresponding to each race
 */
-
-window.generateNumbers = (age, atype, location, blesser)=>{
+function generateNumbers(age, atype, location, blesser){
     // generate an array with the name of the races where the type equals the type of army we want to generate
     const armyRaces = Object.keys(races).filter(raceName => races[raceName].type === atype || races[raceName].type === 'depends'); // we check for the type we provide and the 'depends' string for races that fight on both sides
     let realArmyNums = armyRaces.reduce((armyNumbers, currentRace, index)=>{ // pass reduce for each race, so we can manipulate the worth granularly
@@ -273,15 +298,18 @@ window.generateNumbers = (age, atype, location, blesser)=>{
         }
         return armyNumbers; // always return the accumulator
     }, [])
-    
     return realArmyNums;
 };
 
-/*Generates an object that contains the characteristics of an army:
-TODO: should use the assign() method in any way to clone objects
-*/
-
-window.generateArmy = (type, locale, valar , era ) => {
+/**
+ * @constructor
+ * @param {string} type 'evil' or 'good'
+ * @param {number} locale   1 - 4
+ * @param {number} valar    1 - 8
+ * @param {number} era  1-4
+ * @returns object with army information
+ */
+function generateArmy(type, locale, valar , era ) {
     let getNewArmy = generateNumbers(era, type, locale, valar);
     console.log('aqui si es');
     return {
@@ -290,9 +318,12 @@ window.generateArmy = (type, locale, valar , era ) => {
     }
 };
 
-/* Gets the sum of the army size object returns an integer */
-
-window.calculateArmyWorth = (armyObj) => {
+/**Gets the sum of the army size object returns an integer
+ *
+ * @param {object} armyObj
+ * @returns number army power
+ */
+function calculateArmyWorth(armyObj) {
     console.log(armyObj);
     let totalWorth =armyObj.size.reduce((suma, grupo)=>{
         suma += grupo
@@ -301,9 +332,12 @@ window.calculateArmyWorth = (armyObj) => {
     return totalWorth;
 };
 
-/* Returns an array with the format [winner , loser] where the values can be: 'light', 'darkness', or 'tie' */
-
-window.battleCalculator = (worthGud, worthBad) => {
+/** Winner decider calculator
+ * @param {number} worthGud
+ * @param {number} worthBad
+ * @returns Array with the [winner , loser] where the values can be: 'light', 'darkness', or 'tie'
+ */
+function battleCalculator(worthGud, worthBad) {
     if (worthGud > worthBad){
         return ["light", 'darkness'];
     } else if (worthGud < worthBad){
@@ -313,9 +347,12 @@ window.battleCalculator = (worthGud, worthBad) => {
     };
 };
 
-/* Takes the age (number) to limit the range of years for the random date generator, returns a date object valid within the tolkien legendarium */
-
-window.battleDuration = (age)=>{
+/** Battle date generator
+ * @param {number} age limit the range of years for the random date generator,
+ * @returns  date object valid within the tolkien legendarium
+ */
+function battleDuration(age) {
+    age = +age
     let randomYear = Math.random();
     let randomMonth = Math.floor(Math.random() * 11);
     let randomDay = Math.floor(Math.random() * 30);

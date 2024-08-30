@@ -1,15 +1,15 @@
 
-/* Races and their important characteristics:
-    type: affiliation,
-    worth: how strong,
-    blessingFactor: how much is the army affected depending on the blesser
-    blesser: which valar has affinity for the race,
-    location: where is the main residence of this race,
-    population: how many numbers are expected depending in the location of the battle:
-        Each value represents the expected population on the area as follows:
-            [south, north, west, east]
-        The number of soldiers for the race gets multiplied by the percentage of population that is expected in that area
-        which means, that sometimes even if there is a number generated, if the current area does not have any ent, it will be multiplied by 0
+/** Races and their important characteristics:
+* @type: affiliation,
+* @worth: how strong,
+* @blessingFactor: how much is the army affected depending on the blesser
+* @blesser: which valar has affinity for the race,
+* @location: where is the main residence of this race,
+* @population: how many numbers are expected depending in the location of the battle:
+* Each value represents the expected population on the area as follows:
+*  @[south, north, west, east]
+* @The number of soldiers for the race gets multiplied by the percentage of population that is expected in that area
+* which means, that sometimes even if there is a number generated, if the current area does not have any ent, it will be multiplied by 0
 */
 const races = {
     hobbits:{
@@ -123,11 +123,11 @@ const races = {
         location: 'east',
         _population: [0.2, 0.2, 0.2, 0.5]
     },
-
+    
     getPopulation: function(raceName, cardinal) {
         return this[raceName]._population[cardinal-1];
     },
-
+    
     getBlessing: function (raceName, blesser) {
         console.log(blesser)
         const raceData = this[raceName];
@@ -152,48 +152,55 @@ let valares = {
 window.valares = valares;
 
 
-/* Multiplies the number of troops of certain races which are dominand during said age */
-
-const ages = {first:(race, number) => {
-    if (race === 'elves') {
-        return Math.floor(number * 1.5);
-    } else {
-        return number;
-    }
-},
-maxYear1: 4902 ,
-second:(race, number) => {
-    if (race === 'dunedain') {
-        return Math.floor(number * 1.5);
-    } else {
-        return number;
-    }
-},
-maxYear2: 3441 ,
-
-third : (race, number) => {
-    if (race === 'orcs') {
-        return Math.floor(number * 1.3);
-    } else {
-        return number;
-    }
-},
-maxYear3: 3021,
-
-fourth:(race, number) => {
-    if (race === 'lesser men') {
-        return Math.floor(number * 1.2);
-    } else {
-        return number;
-    }
-},
-maxYear4: 4024,
-
+/**
+*  Multiplies the number of troops of certain races which are dominand during said age
+*/
+const ages = {
+    first:(race, number) => {
+        if (race === 'elves') {
+            return Math.floor(number * 1.5);
+        } else {
+            return number;
+        }
+    },
+    maxYear1: 4902 ,
+    second:(race, number) => {
+        if (race === 'dunedain') {
+            return Math.floor(number * 1.5);
+        } else {
+            return number;
+        }
+    },
+    maxYear2: 3441 ,
+    
+    third : (race, number) => {
+        if (race === 'orcs') {
+            return Math.floor(number * 1.3);
+        } else {
+            return number;
+        }
+    },
+    maxYear3: 3021,
+    
+    fourth:(race, number) => {
+        if (race === 'lesser men') {
+            return Math.floor(number * 1.2);
+        } else {
+            return number;
+        }
+    },
+    maxYear4: 4024,
+    
 }
 window.ages = ages;
 
-/* Messages and method used for interacting with the user */
 
+
+/** Messages and method used for interacting with the user
+*@message-array initialMsg
+*@message-array processingMsg
+*@method getResultMsg
+*/
 const msg = {
     initialMsg: [`Very few are given the \n power to control \n the fate of \n middle earth...`,
         `luckily, you are one of them`,
@@ -202,14 +209,53 @@ const msg = {
         `In what age is the battle taking place?`,
         `Where is your battle going to happen?`,
         `What Valar is observing?`],
-    getResultMsg: function(aDate, age, badArmy, gudArmy, winner, loser){
-        let messages =[`It was the year ${aDate.getFullYear()} in the month ${aDate.getMonth()} in the day ${aDate.getDate()} from the ${age} age, when the armies of darkness, counting ${badArmy} worth, rose upon all the good there is in the land.`,
-        `to face this challenge, the council at Rivendel called for an army, ${gudArmy} strong assembled for battle in the fields of Middle Earth to face the enemy.`,
-        `the battle raged on and in the end the armies of ${winner} rose triumphant destroying the ${loser} forever...`, `the battle raged on and in the end neither of the armies could overcome the other ...`]
-          alert(messages[0])
-          alert(messages[1])
-          winner === loser ? alert(messages[3]) : alert(messages[2]);
-        }
-    }
-window.msg = msg;
-
+        processingMsgs: function(number , army){
+            let messages = ['Conjuring the darkness...',
+                `Wicked!, ${army} Strong came to the call!`,
+                'Summoning the light...',
+                `They, ${army} brave have risen!`]
+                if (number === 1 && army){
+                    return messages[1]
+                } else if (number === 2 && army) {
+                    return messages[3]
+                } else if(number === 1){
+                    return messages[0]
+                } else if(number === 2){
+                    return messages[2]
+                } else {
+                    return `not valid input for processing messages method`
+                }
+            },
+            /**
+            * @constructor
+            *
+            * @param {number} flag  used to control the flow of the messages
+            * @param {Date} aDate  used as parameter for the messages
+            * @param {number} age  used as parameter for the messages 1-4
+            * @param {number} badArmy  used as parameter for the messages, randomly generated
+            * @param {number} gudArmy  used as parameter for the messages, randomly generated
+            * @param {string} winner string that can be 'light', 'darkness' or 'tie'
+            * @param {string} loser string that can be 'light', 'darkness' or 'tie'
+            * @returns {string} with the formated data to be used in alerts or in the page generation
+            */
+            getResultMsg: function(flag, aDate, age, badArmy, gudArmy, winner, loser){
+                const messages =[ ` \n \n \n The battle rages!...`,
+                    `It was the year \n ${aDate.getFullYear()} \n in the month ${aDate.getMonth()} \n in the day ${aDate.getDate()} \n from the ${age} age, \n when the armies of darkness,\n counting ${badArmy} worth,\n rose upon \n all the good \n there is in the land.`,
+                    `to face this challenge, \n the council at Rivendel \n called for an army,\n ${gudArmy} strong \n assembled for battle \n in the fields of \n Middle Earth \n to face the enemy.`,
+                    `the battle raged on \n and in the end \n the armies of ${winner} \n rose triumphant \n destroying the ${loser} \n forever...`,
+                    `the battle raged on \n and in the end \n neither of the armies \n could overcome the other ...`,
+                    `SET A NEW BATTLE!`]
+                    if (flag === 1){
+                        return messages[0];
+                    } else if (flag === 2){
+                        return messages[1];
+                    } else if (flag === 3){
+                        return messages[2];
+                    } else if (flag === 4){
+                        return winner === loser ? messages[4] : messages[3];
+                    } else if (flag === 5){
+                        return messages[5];
+                    }
+                }
+            }
+            window.msg = msg;
