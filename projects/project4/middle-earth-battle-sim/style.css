@@ -2,6 +2,9 @@ body {
     background-color: #1d1d1d;
 }
 
+input[type="radio"] {
+    display: none;
+}
 
 @font-face {
     font-family: "middleEarth";
@@ -38,6 +41,14 @@ body {
         font-weight: 400;
         font-size: 40px;
         margin: 55% 20% 0 20%;
+        text-align: center;
+    }
+
+    .inputText{
+        font-family: 'hobbiton', Arial, sans-serif;
+        font-weight: 400;
+        font-size: 40px;
+        margin: 25% 20% 0 20%;
         text-align: center;
     }
 

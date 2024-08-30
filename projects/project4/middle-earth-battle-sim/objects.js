@@ -199,8 +199,8 @@ const msg = {
         `luckily, you are one of them`,
         `your decisions will affect the future of a decisive battle between the forces of good and evil, light and darkness`,
         `please let us know, what the future brings:`,
-        `In what age is the battle taking place? (input only numbers 1,2,3 or 4)`,
-        `Where is your battle going to happen? (input only numbers) \n (1. South [Gondor, Mordor, Rohan];\n 2.  North [Arnor, Angmar]   \n 3. West [Eriador,Blue Mntns, Forlindon];\n 4. East [Mirkwood, Erebor, Misty Mntns]; ) `,
+        `In what age is the battle taking place?`,
+        `Where is your battle going to happen? \n 1. South \n 2. North  \n 3. West \n 4. East ) `,
         `What Valar is observing?
                   (only numbers)
                     1.Manwë (King of arda)

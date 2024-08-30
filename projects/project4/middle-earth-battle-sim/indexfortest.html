@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body style="background-color: #1d1d1d" id='body'>
+    <script>
+        const body = document.getElementById('body');
+        const selectionContainer = document.createElement('div');
+        const inputContainer = document.createElement('div');
+        const continueButton = document.createElement('button');
+        
+        continueButton.textContent = 'Continue';
+
+        function ageCreateInput(inputAmount, option){
+            for (let index = 1; index <= inputAmount; index++) {
+                const inputElement = document.createElement('input');
+                const inputLabel = document.createElement('label');
+                const inputImg = document.createElement('img');
+                inputElement.type = 'radio';
+                inputElement.value = index;
+                inputElement.name = 'selection';
+                inputImg.src = `./images/${option}/${index}-mobile.jpeg`;
+                inputLabel.appendChild(inputImg);
+                inputLabel.appendChild(inputElement);
+                inputContainer.appendChild(inputLabel);
+            }
+            selectionContainer.appendChild(inputContainer);
+            body.appendChild(selectionContainer);
+            body.appendChild(continueButton);
+        }
+
+        function captureSelection() {
+            const selectedValue = document.querySelector('input[name="selection"]:checked').value;
+            const selectionArray = [selectedValue];
+            userinput.concat(selectionArray) ;
+        }
+
+        continueButton.addEventListener('click', captureSelection);
+
+        ageCreateInput(4, 'ages');
+    </script>
+</body>
+</html>
