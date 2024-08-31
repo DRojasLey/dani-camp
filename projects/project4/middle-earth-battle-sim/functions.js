@@ -1,4 +1,4 @@
-//DOM definitions
+//DOM definitions//
 const body = document.getElementById('body')
 const mainBlock = document.getElementById('mainBlock');
 const startBlock = document.getElementById('startBlock');
@@ -25,7 +25,8 @@ function setMainSpace(currentActionNumber, userInputArray){
     } else if (currentActionNumber >= 5 && currentActionNumber < 8 ){
         body.style.display = 'flex';
         body.style.flexDirection = 'column';
-        body.style.backgroundSize = 'contain';
+        body.style.backgroundSize = 'cover';
+        body.setAttribute('class', 'bodyForBack');
         body.style.backgroundRepeat = 'no-repeat'
         body.style.backgroundImage = "url('./images/UI/paper-background.jpeg')";
         mainBlock.style.backgroundImage = "";
@@ -39,6 +40,8 @@ function setMainSpace(currentActionNumber, userInputArray){
         startBlock.style.display = 'block';
         startBlock.style.backgroundImage = "url('./images/UI/paper-background.jpeg')";
     } else if (currentActionNumber >= 12){
+        body.setAttribute('class', 'bodyForBack');
+        body.style.backgroundPositionY = '0'
         storyText.style.color= '#ff0000'
         body.style.backgroundImage = "";
         mainBlock.style.backgroundImage = "";
@@ -110,12 +113,12 @@ function setMainSpace(currentActionNumber, userInputArray){
             default:
             console.log('Location input is not valid for a background')
         }
-        body.style.backgroundSize = '400%';
-        body.style.backgroundPositionX = '45%'
+        body.style.backgroundSize = '220%';
+        body.style.backgroundPositionX = '5%'
         //TODO: to set the correct location of the image on the body background we should use the position attribute here as well
         ageBackgroundContainer.setAttribute('class', 'ageBackgroundContainer')
-        body.appendChild(ageBackgroundContainer);
         ageBackgroundContainer.appendChild(ageBackground);
+        body.appendChild(ageBackgroundContainer);
         valarBackgroundContainer.setAttribute('class', 'valarBackgroundContainer')
         body.appendChild(valarBackgroundContainer);
         valarBackgroundContainer.appendChild(valarBackground);
@@ -123,7 +126,7 @@ function setMainSpace(currentActionNumber, userInputArray){
 };
 
 /**
- * create the exclusive button for each action
+ * create a unique button for each action
  * @param {number} actionNumeral used to determine the correct button to add
  */
 function createContinueBtn(actionNumeral) {
@@ -227,48 +230,6 @@ function captureSelection(numeral) {
     }
     console.log(userinput);
 }
-
-/**Declares the input request from the user,
-performs data validation on the numbers
-returns an array of 3 numbers for each selection:
-[age:1-4, location: 1-4, valar: 1-8]
-*/
-window.getUserInput = () => {
-    alert(msg.initialMsg[0]);
-    alert(msg.initialMsg[1]);
-    alert(msg.initialMsg[2]);
-    alert(msg.initialMsg[3]);
-
-    let eons;
-    let location;
-    let valar;
-    // input validation:
-    do {
-        eons = prompt(msg.initialMsg[4]);
-        if (isNaN(eons) || eons < 1 || eons > 4) {
-            alert("Error, your input for Age is not a valid selection. Try again.");
-            eons = null;// make it falsy for the while
-        }
-    } while (!eons);
-
-    do {
-        location = prompt(msg.initialMsg[5]);
-        if (isNaN(location) || location < 1 || location > 4) {
-            alert("Error, your input for location is not a valid selection. Try again.");
-            location = null;
-        }
-    } while (!location);
-
-    do {
-        valar = prompt(msg.initialMsg[6]);
-        if (isNaN(valar) || valar < 1 || valar > 8) {
-            alert("Error, your input for Valar is not a valid selection. Try again.");
-            valar = null;
-        }
-    } while (!valar);
-    
-    return [eons, location, valar];
-};
 
 /** Generate the numbers of the army randomly
  * @constructor

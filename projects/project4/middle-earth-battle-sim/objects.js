@@ -134,11 +134,12 @@ const races = {
         return raceData.blesser === blesser ? raceData.blessingFactor : 0;
     }
 };
-
 window.races = races;
 
 
-/* Valar names and relations, object to be used in the calculation of the blessing */
+/**Valar names and relations,
+* object to be used in the calculation of the blessing
+*/
 let valares = {
     1:'Manwë',
     2:'Melkor',
@@ -202,7 +203,7 @@ window.ages = ages;
 *@method getResultMsg
 */
 const msg = {
-    initialMsg: [`Very few are given the \n power to control \n the fate of \n middle earth...`,
+    initialMsg: [`Very few are given the power to control the fate of middle earth...`,
         `luckily, you are one of them`,
         `your decisions will affect the future of a decisive battle between the forces of good and evil, light and darkness`,
         `please let us know, what the future brings:`,
@@ -239,11 +240,11 @@ const msg = {
             * @returns {string} with the formated data to be used in alerts or in the page generation
             */
             getResultMsg: function(flag, aDate, age, badArmy, gudArmy, winner, loser){
-                const messages =[ ` \n \n \n The battle rages!...`,
-                    `It was the year \n ${aDate.getFullYear()} \n in the month ${aDate.getMonth()} \n in the day ${aDate.getDate()} \n from the ${age} age, \n when the armies of darkness,\n counting ${badArmy} worth,\n rose upon \n all the good \n there is in the land.`,
-                    `to face this challenge, \n the council at Rivendel \n called for an army,\n ${gudArmy} strong \n assembled for battle \n in the fields of \n Middle Earth \n to face the enemy.`,
-                    `the battle raged on \n and in the end \n the armies of ${winner} \n rose triumphant \n destroying the ${loser} \n forever...`,
-                    `the battle raged on \n and in the end \n neither of the armies \n could overcome the other ...`,
+                const messages =[ `The battle rages!...`,
+                    `It was the year ${aDate.getFullYear()} in the month ${aDate.getMonth()} in the day ${aDate.getDate()} from the ${age} age, when the armies of darkness, counting ${badArmy} worth, rose upon  all the good there is in the land.`,
+                    `to face this challenge,  the council at Rivendel called for an army, ${gudArmy} strong assembled for battle in the fields of Middle Earth  to face the enemy.`,
+                    `the battle raged on and in the end the armies of ${winner} rose triumphant destroying the ${loser} forever...`,
+                    `the battle raged on and in the end neither of the armies could overcome the other ...`,
                     `SET A NEW BATTLE!`]
                     if (flag === 1){
                         return messages[0];

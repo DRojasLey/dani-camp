@@ -1,11 +1,12 @@
 body {
     background-color: #1d1d1d;
     text-align: center;
+    width: 100%;
+    height: 100%;
+
 }
 
-body::before{
-    opacity: 10%;
-}
+/* FONTS */
 
 input[type="radio"] {
     display: none;
@@ -31,39 +32,54 @@ input[type="radio"] {
     src: url("./fonts/ringbearer-font/RingbearerMedium-51mgZ.ttf");
 }
 
+/* VERTICAL HD MONITOR */
+
 
 @media (max-width: 768px) {
     .mainBlock {
         display: flex;
         flex-direction: column;
         justify-items: center;
-        align-items: center;
         opacity: 100%;
-
+        width: 100%;
     }
 
-    .storyText{
+    .storyText {
         font-family: 'hobbiton', Arial, sans-serif;
         font-weight: 400;
         font-size: 40px;
-        margin: 80% 20% 0 20%;
+        margin: 60% 0% 0% 0%;
         text-align: center;
+        z-index: 5;
+        width: 80%;
+        height: auto;
+        padding: 0 10% 0 10%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
     }
 
     .storyText2{
         font-family: 'middleEarth', Arial, sans-serif;
         font-weight: 400;
         font-size: 40px;
-        margin: 50% 15% 0 15%;
+        margin: 60% 0% 0% 0%;
         text-align: center;
+        z-index: 5;
+        width: 80%;
+        height: auto;
+        padding: 0 10% 0 10%;
+        position: relative;
     }
 
     .inputText{
         font-family: 'hobbiton', Arial, sans-serif;
         font-weight: 400;
         font-size: 40px;
-        margin: 25% 20% 0 20%;
+        margin: 15% 10% 0 10%;
         text-align: center;
+        z-index: 5;
     }
 
     .startBlock {
@@ -74,15 +90,16 @@ input[type="radio"] {
         margin-top: 7%;
         flex-direction: column;
         background-size: cover;
+        width: 100%;
     }
 
     .startbutton {
         border: none;
         background: scroll;
         cursor: pointer;
-        color: #FFFFFF; /* Change the text color as needed */
-        font-size: 16px; /* Adjust the font size */
-        padding: 10px 20px; /* Add padding for spacing */
+        color: #FFFFFF;
+        font-size: 16px;
+        padding: 10px 20px;
         margin:  80% 20% 30% 23%;
         font-size: 90px;
         font-family: 'ringbearer', Arial, sans-serif;
@@ -91,6 +108,8 @@ input[type="radio"] {
         background: -webkit-linear-gradient(#22AEDF, #EA5725);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        z-index: 6;
+
     }
 
     .button1 {
@@ -100,7 +119,7 @@ input[type="radio"] {
         color: #FFFFFF;
         font-size: 16px;
         padding: 10px 20px;
-        margin:  5% 20% 30% 23%;
+        margin:  0;
         font-size: 24px;
         font-family: 'middleEarth', Arial, sans-serif;
         font-weight:normal;
@@ -108,6 +127,9 @@ input[type="radio"] {
         background: -webkit-linear-gradient(#fff, #000);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        z-index: 6;
+        position: relative;
+
     }
     .button2 {
         border: none;
@@ -124,6 +146,8 @@ input[type="radio"] {
         background: -webkit-linear-gradient(#ff0000, #ff0000);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        z-index: 6;
+
     }
 
     .button2:hover {
@@ -147,26 +171,35 @@ input[type="radio"] {
         border: none;
         background: scroll;
         cursor: pointer;
-        color: #FFFFFF; /* Change the text color as needed */
-        font-size: 16px; /* Adjust the font size */
-        padding: 10px 20px; /* Add padding for spacing */
+        color: #FFFFFF;
+        font-size: 16px;
+        padding: 10px 20px;
         margin:  80% 20% 30% 23%;
         font-size: 90px;
+        z-index: 6;
+
     }
     .ageBackground {
         background-size: contain;
         background-repeat: no-repeat;
+        position: absolute;
+        background-position-y: bottom;
         width: 300px;
         height: 300px;
         opacity: 50%;
+        z-index: 2;
+
     }
     .valarBackground {
         background-size: cover;
         background-repeat: no-repeat;
-        background-position-x: 250%;
+        background-position-x: 105%;
+        position: absolute;
         width: 600%;
         height: 600px;
         opacity: 50%;
+        z-index: 2;
+
     }
 
     .valarBackgroundContainer {
@@ -193,10 +226,252 @@ input[type="radio"] {
     .selectedImg {
         display: inline-block;
         background-color: #000;
-        border: 3px solid #000;
+        border: 10px solid #000;
         position: relative;
     }
     input[type="radio"]:checked ~ .selectedImg {
-        border-color: #FFD700; /* Yellow border on click */
+        border-color: #FF0000;
+    }
+}
+
+/* MOBILE? */
+
+@media (max-width: 390px) {
+    .startBlock {
+        background-position: 0;
+        background-size: auto;
+        background-repeat: no-repeat;
+        width: 390px;
+        height: 844px;
+        margin: 0;
+    }
+    .startbutton {
+        margin: 110% 10%;
+        font-size: 30px;
+    }
+    .storyText{
+        font-size: 30px;
+        width: 80%;
+        height: 282px;
+        margin: 60% 0% 0% 0%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .selectedImg {
+        width: 350px;
+    }
+
+    .inputText {
+        font-size: 30px;
+    }
+    .button2 {
+        font-size: 20px;
+    }
+    .bodyForBack {
+        background-size: cover;
+    }
+    .storyText2 {
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .valarBackground {
+        width: 100%;
+    }
+    .ageBackground {
+        width: 50%;
+        height: 195px;
+        background-position-x: 55% ;
+        position: relative;
+    }
+    input[type="radio"]:checked ~ .selectedImg {
+        border-color: #FF0000;
+    }
+}
+
+/* MONITOR SCREEN */
+
+
+@media (min-width: 769px) {
+    .mainBlock {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        opacity: 100%;
+        width: 100%;
+    }
+
+    .storyText {
+        font-family: 'hobbiton', Arial, sans-serif;
+        font-weight: 400;
+        font-size: 40px;
+        margin: 60% 0% 0% 0%;
+        text-align: center;
+        z-index: 5;
+        width: 80%;
+        height: auto;
+        padding: 0 10% 0 10%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .bodyForBack {
+        background-size: cover !important;
+    }
+
+    .storyText2{
+        font-family: 'middleEarth', Arial, sans-serif;
+        font-weight: 400;
+        font-size: 40px;
+        margin: 25% 0% 0% 0%;
+        text-align: center;
+        z-index: 5;
+        width: 80%;
+        height: auto;
+        padding: 0 10% 0 10%;
+        position: relative;
+    }
+
+    .inputText{
+        font-family: 'hobbiton', Arial, sans-serif;
+        font-weight: 400;
+        font-size: 40px;
+        margin: 15% 10% 0 10%;
+        text-align: center;
+        z-index: 5;
+    }
+
+    .startBlock {
+        display: flex;
+        background-image: url('./images/UI/cool-to-add.png');
+        width: 800px;
+        height: 1330px;
+        margin: 0 25%;
+        flex-direction: column;
+        background-size: cover;
+    }
+
+    .startbutton {
+        border: none;
+        background: scroll;
+        cursor: pointer;
+        color: #FFFFFF;
+        font-size: 16px;
+        padding: 10px 20px;
+        margin:  80% 20% 30% 23%;
+        font-size: 90px;
+        font-family: 'ringbearer', Arial, sans-serif;
+        font-weight:normal;
+        font-style:normal;
+        background: -webkit-linear-gradient(#22AEDF, #EA5725);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        z-index: 6;
+
+    }
+
+    .button1 {
+        border: none;
+        background: scroll;
+        cursor: pointer;
+        color: #FFFFFF;
+        font-size: 16px;
+        padding: 10px 20px;
+        margin:  0;
+        font-size: 24px;
+        font-family: 'middleEarth', Arial, sans-serif;
+        font-weight:normal;
+        font-style:normal;
+        background: -webkit-linear-gradient(#fff, #000);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        z-index: 6;
+        position: relative;
+
+    }
+    .button2 {
+        border: none;
+        background: scroll;
+        cursor: pointer;
+        color: #FFFFFF;
+        font-size: 16px;
+        padding: 10px 20px;
+        margin:  2%;
+        font-size: 24px;
+        font-family: 'middleEarth', Arial, sans-serif;
+        font-weight:normal;
+        font-style:normal;
+        background: -webkit-linear-gradient(#ff0000, #ff0000);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        z-index: 6;
+
+    }
+
+     .nextButton {
+        border: none;
+        background: scroll;
+        cursor: pointer;
+        color: #FFFFFF;
+        font-size: 16px;
+        padding: 10px 20px;
+        margin:  80% 20% 30% 23%;
+        font-size: 90px;
+        z-index: 6;
+
+    }
+    .ageBackground {
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        opacity: 50%;
+        z-index: 2;
+
+    }
+    .valarBackground {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-x: 105%;
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        opacity: 50%;
+        z-index: 2;
+
+    }
+
+    .valarBackgroundContainer {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .ageBackgroundContainer {
+        display: flex;
+        flex-direction: row;
+        margin-top: -10%;
+    }
+    .inputContainer {
+        display: block;
+        flex-direction: row;
+        margin: 20px;
+    }
+    label {
+        margin-top: 2%;
+    }
+    .selectedImg {
+        display: inline-block;
+        background-color: #000;
+        border: 10px solid #000;
+        position: relative;
+        width: 35%;
+    }
+    input[type="radio"]:checked ~ .selectedImg {
+        border-color: #FF0000; 
     }
 }

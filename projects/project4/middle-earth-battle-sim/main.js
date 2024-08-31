@@ -4,10 +4,8 @@ let loser;
 let winner;
 let battleResult;
 let bateruDate;
-
 let userinput = [1 , 1 , 1];
 let actionCounter = 0;
-// window.badArmy = badArmy
 
 function firstAction() {
     actionCounter = 1;
@@ -22,7 +20,7 @@ startButton.addEventListener('click', () => firstAction());
 function secondAction() {
     button1.removeEventListener('click', ()=>secondAction())
     button1.remove()
-    actionCounter = 2;
+    actionCounter++;
     setMainSpace(actionCounter);
     createMessage(msg.initialMsg[1], actionCounter);
     createContinueBtn(actionCounter)
@@ -32,7 +30,7 @@ function secondAction() {
 function thirdAction() {
     button1.removeEventListener('click', ()=>thirdAction())
     button1.remove()
-    actionCounter = 3;
+    actionCounter++;
     setMainSpace(actionCounter);
     createMessage(msg.initialMsg[2], actionCounter);
     createContinueBtn(actionCounter)
@@ -42,7 +40,7 @@ function thirdAction() {
 function fourthAction() {
     button1.removeEventListener('click', ()=>fourthAction())
     button1.remove()
-    actionCounter = 4;
+    actionCounter++;
     setMainSpace(actionCounter);
     createMessage(msg.initialMsg[3], actionCounter);
     createContinueBtn(actionCounter)
@@ -52,7 +50,7 @@ function fourthAction() {
 function fifthAction() {
     button1.removeEventListener('click', ()=>fifthAction())
     button1.remove()
-    actionCounter = 5;
+    actionCounter++;
     setMainSpace(actionCounter);
     createMessage(msg.initialMsg[4], actionCounter);
     createContinueBtn(actionCounter);
@@ -69,7 +67,7 @@ function sixthAction() {
         sixthAction();
     });
     button2.remove()
-    actionCounter = 6;
+    actionCounter++;
     setMainSpace(actionCounter);
     createMessage(msg.initialMsg[5], actionCounter);
     createContinueBtn(actionCounter);
@@ -86,7 +84,7 @@ function seventhAction() {
         seventhAction();
     });
     button2.remove()
-    actionCounter = 7;
+    actionCounter++;
     setMainSpace(actionCounter);
     createMessage(msg.initialMsg[6], actionCounter);
     createContinueBtn(actionCounter);
@@ -103,7 +101,7 @@ function eighthAction(){
         eighthAction();
     });
     button2.remove()
-    actionCounter = 8;
+    actionCounter++;
     setMainSpace(actionCounter);
     createMessage(msg.processingMsgs(1), actionCounter);
     createContinueBtn(actionCounter);
@@ -115,7 +113,7 @@ function eighthAction(){
 function ninthAction() {
     button2.removeEventListener('click', ()=>ninthAction());
     button2.remove()
-    actionCounter = 9;
+    actionCounter++;
     setMainSpace(actionCounter);
     createMessage(msg.processingMsgs(1, badArmy), actionCounter);
     createContinueBtn(actionCounter);
@@ -125,7 +123,7 @@ function ninthAction() {
 function tenthAction() {
     button2.removeEventListener('click', ()=>tenthAction());
     button2.remove()
-    actionCounter = 10;
+    actionCounter++;
     setMainSpace(actionCounter);
     createMessage(msg.processingMsgs(2), actionCounter);
     createContinueBtn(actionCounter);
@@ -138,7 +136,7 @@ function eleventhAction() {
     console.log(gudArmy + ': gud ' + badArmy + ': bad');
     button2.removeEventListener('click', ()=>eleventhAction());
     button2.remove()
-    actionCounter = 11;
+    actionCounter++;
     setMainSpace(actionCounter);
     createMessage(msg.processingMsgs(2, gudArmy), actionCounter);
     createContinueBtn(actionCounter);
@@ -148,7 +146,7 @@ function eleventhAction() {
 function twelfthAction() {
     button2.removeEventListener('click', ()=>twelfthAction());
     button2.remove();
-    actionCounter= 12
+    actionCounter++;
     battleResult = battleCalculator(gudArmy, badArmy);
     bateruDate = battleDuration(userinput[0]);
     loser = battleResult[1];
@@ -163,8 +161,7 @@ function twelfthAction() {
 function thirteenthAction() {
     button2.removeEventListener('click', ()=>thirteenthAction());
     button2.remove();
-    actionCounter= 13
-
+    actionCounter++
     setMainSpace(actionCounter, userinput);
     createMessage(msg.getResultMsg(2, bateruDate, userinput[0], badArmy, gudArmy, winner, loser ), actionCounter);
     createContinueBtn(actionCounter);
@@ -174,8 +171,7 @@ function thirteenthAction() {
 function fourteenthAction() {
     button2.removeEventListener('click', ()=>fourteenthAction());
     button2.remove();
-    actionCounter= 14
-
+    actionCounter++;
     setMainSpace(actionCounter, userinput);
     createMessage(msg.getResultMsg(3, bateruDate, userinput[0], badArmy, gudArmy, winner, loser ), actionCounter);
     createContinueBtn(actionCounter);
@@ -185,7 +181,7 @@ function fourteenthAction() {
 function fifteenthAction() {
     button2.removeEventListener('click', ()=>fifteenthAction());
     button2.remove();
-    actionCounter= 15
+    actionCounter++;
 
     setMainSpace(actionCounter, userinput);
     createMessage(msg.getResultMsg(4, bateruDate, userinput[0], badArmy, gudArmy, winner, loser ), actionCounter);
@@ -196,7 +192,7 @@ function fifteenthAction() {
 function lastAction(){
     button2.removeEventListener('click', ()=>lastAction());
     button2.remove();
-    actionCounter= 16
+    actionCounter++;
     setMainSpace(actionCounter, userinput);
     createMessage('The End', actionCounter)
 }
