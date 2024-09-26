@@ -3,9 +3,10 @@
 
 [Daniel Trujillo GitHub Account](https://github.com/danieltrujillo003)
 
-## Completed projects: 
+## Completed projects:
 
 ### Project 1: Shiritori
+>v2.0.1
 
 [Shiritori](projects/project1/README.md)
 
