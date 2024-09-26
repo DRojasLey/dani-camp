@@ -88,10 +88,9 @@ const gameAgain =  () =>{
     finishBtnCtn.style.display = 'flex'
     scoreContainer.style.display = 'flex';
     finishSection.style.display = 'none';
+    invalidInputBlock.innerHTML = '';
     invalidInputBlock.style.display = 'none'
     tryAgainBtn.style.display = 'none'
-    
-    
 };
 
 //generate a random word and pass it to the computer word
