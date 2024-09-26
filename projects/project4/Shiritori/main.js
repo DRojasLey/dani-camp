@@ -1,19 +1,17 @@
-// main file for the actual Js code of the game
-
-//We will add the dictionary in this section, I will not add it yet to avoid all that clutter, we will use for now a small array
 let randomWord = '';
 let userFails = [];
 let userRecap = [];
 let ourWord = '';
 let prevWLetter ;
-// DOM variables
 
-//back to menu button
-
+/**
+ * back to menu button
+**/
 const sendingToHome = () =>{
     window.location.href = './index.html';
 };
 
+// DOM variables
 const computerWord = document.getElementById('computer');
 const submitButton = document.getElementById('sbmtBtn');
 const gameContainer = document.getElementById('gameContainer');
@@ -34,19 +32,25 @@ const pointoInsert = document.querySelector('#pointoIsert');
 const gudList = document.getElementById('scoreTableGood');
 const badList = document.getElementById('scoreTableBad');
 
+
 backBtnGame.addEventListener('click', sendingToHome)
 finishSection.style.display = 'none';
 invalidInputBlock.style.display = 'none';
 tryAgainBtn.style.display = 'none';
 
 
-
-//Function to dynamically update the points
-
+/**
+* Takes good or bad word evaluation and returns current score
+*
+* @param {string} gOrB takes g or b good or bad
+* @returns current game score
+*/
 function updatePoint(gOrB){
-    if (gOrB === 'g'){
+    gOrB = gOrB.toLowerCase();
+    if (!gOrB) return console.error('No word evaluation provided - incorrect call to updatePoint');
+    if (gOrB === 'g' || gOrB === 'good'){
         return `HITS: ${userRecap.length}`;
-    } else if (gOrB === 'b'){
+    } else if (gOrB === 'b' || gOrB === 'bad'){
         return `FAILS: ${userFails.length}`;
     } else {
         alert('Bad Good Or Bad Input')
@@ -54,8 +58,11 @@ function updatePoint(gOrB){
 };
 
 
-//finish the game action:
 
+/**
+* Finishes the game resets player facing information
+*
+*/
 const finishGame = () =>{
     pointoCont.style.alignItems = 'center'
     finishSection.style.display = 'flex';
@@ -72,17 +79,18 @@ const finishGame = () =>{
 
 finishBtn.addEventListener('click', finishGame)
 
-//restart the game function:
-
+/**
+* restart the game actions
+*
+* resets scores and user facing information
+*/
 const gameAgain =  () =>{
-    //TODO: reset the  scores
-    //hid the alert
     userFails = [];
     userRecap = [];
     lostMsg.remove()
     gameContainer.style.display = 'flex'
-    gudPointo.innerText = updatePoint('g');
-    badPointo.innerText = updatePoint('b');
+    gudPointo.innerText = updatePoint('good');
+    badPointo.innerText = updatePoint('bad');
     pointoInsert.appendChild(pointoCont);
     submitButton.style.display = 'block'
     finishBtnCtn.style.display = 'flex'
@@ -93,24 +101,31 @@ const gameAgain =  () =>{
     tryAgainBtn.style.display = 'none'
 };
 
-//generate a random word and pass it to the computer word
-
+/**
+ * executes on load, generates the first computer word
+ *
+*/
 window.addEventListener("load", (event) => {
-    ourWord = randomWordGenerator(''); // we initialize the game by assigning a random word to start?
+    ourWord = randomWordGenerator('');
     computerWord.innerText = ourWord;
 });
 
 
-//clear the list function:
-
+/**
+* Removes the words from the list passed to it
+*
+* @param {string} list Dom element word list
+*/
 function clearList(list){
     while (list.firstChild) {
         list.removeChild(list.firstChild);
     }
 };
 
-//actions to take when the user loses
-
+/**
+* takes action when the user loses, clears score and user facing information
+*
+*/
 function userLosesActions(){
     finishSection.style.display = 'flex';
     finishSection.appendChild(pointoCont);
@@ -123,18 +138,21 @@ function userLosesActions(){
     clearList(gudList);
     clearList(badList);
     tryAgainBtn.addEventListener('click', gameAgain);
-
 };
 
-//user losses message creation
-
+/**
+*Creates a You lose error
+*/
 function userLoses(){
     lostMsg.innerText = 'You Lost'
     lostMsg.setAttribute('id','lostTxt');
     lostMsg.setAttribute('class','lostTxt');
 };
 
-
+/**
+* executes actions when an incorrect input is given
+* @param {string} word can be '' or an invalid string
+*/
 function badInputActions(word){
     gameContainer.style.display = 'none';
     submitButton.style.display = 'none';
@@ -147,13 +165,15 @@ function badInputActions(word){
     clearList(gudList);
     clearList(badList);
     tryAgainBtn.addEventListener('click', gameAgain);
-
 };
 
-//Function to generate random words
-
+/**
+* Generate a new random word
+* @param {string} lastLetter single character string representing the last letter of the previous word
+* @returns a new random word based on the last provided letter
+*/
 function randomWordGenerator(lastLetter){
-    if (lastLetter === ''){
+    if (!lastLetter){
         randomWord = dictionary[Math.floor(Math.random() * dictionary.length)];
         return randomWord;
     } else {
@@ -162,32 +182,43 @@ function randomWordGenerator(lastLetter){
         } while (lastLetter !== randomWord.charAt(0));
         return randomWord;
     }
-
 };
 
-//function that checks if the string is only letters
-
+/**
+* validate word data to be only alphabetical characters
+* @param {string} str word to validate
+* @returns boolean if the word passes the test
+*/
 function isOnlyLetter(str){
     return /^[A-Z]+$/i.test(str)
 };
 
-//function to add words to the good words list
-
+/**
+* Add the most recent word to the Good words list
+* player facing information
+*/
 function goodList(){
     let newWordToList = document.createElement('li');
     newWordToList.textContent = userRecap[userRecap.length -1];
     gudList.appendChild(newWordToList);
 };
 
-//function to add words to the good words list
+/**
+* Add the most recent word to the bad words list
+* player facing information
+*/
 function badListo(){
     const newWordToList = document.createElement('li');
     newWordToList.textContent = userFails[userFails.length -1];
     badList.appendChild(newWordToList);
 };
 
-//add a correct invalid input alert
-
+/**
+* Append the error message when the provided word is not valid
+*
+* player facing information
+* @param {string} word string or empty
+*/
 function invalidWord(word){
     const newMsgToAdd = document.createElement('h3');
     let badInputMsg = word ? `Your last Input was ${word} which is not a valid word` : `Your last Input was empty which is not valid`;
@@ -195,36 +226,30 @@ function invalidWord(word){
     invalidInputBlock.appendChild(newMsgToAdd)
 };
 
-//function to validate the word and apply scoring
-
+/**
+* Handle user input, apply scoring
+* @param {string} userInput user submission
+* @returns last character of a valid word or false if word is not valid
+*/
 function wordProcessor(userInput){
-    if (isOnlyLetter(userInput)){
-        userInput = userInput.toLowerCase()
-        if (userInput.length > 6){
-            if (userInput.charAt(0) === randomWord.charAt(randomWord.length-1)){    // checks if the character at 0 of the user word  is equal to the last character of the random word
-                dictionary.push(userInput);
-                userRecap.push(userInput);
-                gudPointo.innerText = updatePoint('g');
-                goodList();
-            } else {
-                userFails.push(userInput); // adds a fail to the fail array
-                badPointo.innerText = updatePoint('b');
-                badListo();
-            };
-        } else {
-            userFails.push(userInput);// adds a fail to the fail array
-            badPointo.innerText = updatePoint('b');
-            badListo();
-        }
-    } else {
-        console.log(`bad input "more than words"`);
-        return ''; //WordProcessor will return false to the actualGame if the input is not correct
+    if (!isOnlyLetter(userInput)) return false ;
+    userInput = userInput.toLowerCase()
+    if ((userInput.length <= 6) || (!(userInput.charAt(0) === randomWord.charAt(randomWord.length-1)))){
+        userFails.push(userInput);
+        badPointo.innerText = updatePoint('b');
+        badListo();
+        return userInput.charAt(userInput.length-1);
     }
-    return userInput.charAt(userInput.length-1); // I feel like including this task here will make me reprocess the word everytime, maybe we could implement a solution to this later
+    dictionary.push(userInput);
+    userRecap.push(userInput);
+    gudPointo.innerText = updatePoint('g');
+    goodList();
+    return userInput.charAt(userInput.length-1);
 };
 
-// Main action event
-
+/**
+ * Submit a new word button
+ */
 submitButton.addEventListener('click', () => {
     const userWordinput = document.getElementById('iuserInput').value
     const inputElement = document.getElementById('iuserInput')
