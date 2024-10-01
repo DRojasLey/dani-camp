@@ -239,12 +239,14 @@ const dictionaryWordCheck = async ( wordToCheck ) => {
 /**
 * Handle user input, apply scoring
 * @param {string} userInput user submission
+* @param {boolean} realWordFlag determines if the word is a valid dictionary word
 * @returns last character of a valid word or false if word is not valid
 */
-function wordProcessor(userInput){
+function wordProcessor(userInput ,realWordFlag){
+
     if (!isOnlyLetter(userInput)) return false ;
     userInput = userInput.toLowerCase()
-    if ((userInput.length <= 6) || (!(userInput.charAt(0) === randomWord.charAt(randomWord.length-1)))){
+    if ((userInput.length <= 6) || !realWordFlag || (!(userInput.charAt(0) === randomWord.charAt(randomWord.length-1)))){
         userFails.push(userInput);
         badPointo.innerText = updatePoint('b');
         badListo();
@@ -259,15 +261,15 @@ function wordProcessor(userInput){
 
 /**
  * Submit a new word button
+ * will async check for the word in the dictionary
  */
 submitButton.addEventListener('click', () => {
     const userWordinput = document.getElementById('iuserInput').value
     const inputElement = document.getElementById('iuserInput')
 
     dictionaryWordCheck( userWordinput ).then(data => {
-        console.log(data);
 
-        prevWLetter = wordProcessor(userWordinput);
+        prevWLetter = wordProcessor(userWordinput, true);
 
         if (userFails.length < 3 && prevWLetter){
             ourWord = randomWordGenerator(prevWLetter);
@@ -276,7 +278,7 @@ submitButton.addEventListener('click', () => {
         } else if (!prevWLetter) {
             badInputActions(userWordinput);
             inputElement.value = ""
-        } else if (userFails.length > 3) {
+        } else if (userFails.length >= 3) {
             //when user loses
             userLoses();
             userLosesActions()
@@ -284,11 +286,22 @@ submitButton.addEventListener('click', () => {
         };
     })
     .catch( error => {
-        userFails.push(userWordinput);
-        badPointo.innerText = updatePoint('b');
-        badListo();
-        badInputActions(userWordinput);
-        inputElement.value = ""
+        console.log(error);
+        prevWLetter = wordProcessor(userWordinput, false);
+
+        if (userFails.length < 3 && prevWLetter){
+            ourWord = randomWordGenerator(prevWLetter);
+            computerWord.innerText = ourWord;
+            inputElement.value = ""
+        } else if (!prevWLetter) {
+            badInputActions(userWordinput);
+            inputElement.value = ""
+        } else if (userFails.length >=3) {
+            //when user loses
+            userLoses();
+            userLosesActions()
+            inputElement.value = ""
+        };
     });
 });
 
