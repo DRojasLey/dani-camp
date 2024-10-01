@@ -226,6 +226,16 @@ function invalidWord(word){
     invalidInputBlock.appendChild(newMsgToAdd)
 };
 
+const dictionaryWordCheck = async ( wordToCheck ) => {
+	const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordToCheck}`);
+        if (response.status !== 200){
+            throw new Error();
+        }
+	const data = await response.json() // get data from the promise
+	return data;
+}
+
+
 /**
 * Handle user input, apply scoring
 * @param {string} userInput user submission
@@ -253,20 +263,33 @@ function wordProcessor(userInput){
 submitButton.addEventListener('click', () => {
     const userWordinput = document.getElementById('iuserInput').value
     const inputElement = document.getElementById('iuserInput')
-    prevWLetter = wordProcessor(userWordinput);
-    if (userFails.length < 3 && prevWLetter){
-        ourWord = randomWordGenerator(prevWLetter);
-        computerWord.innerText = ourWord;
-        inputElement.value = ""
-    } else if (!prevWLetter) {
+
+    dictionaryWordCheck( userWordinput ).then(data => {
+        console.log(data);
+
+        prevWLetter = wordProcessor(userWordinput);
+
+        if (userFails.length < 3 && prevWLetter){
+            ourWord = randomWordGenerator(prevWLetter);
+            computerWord.innerText = ourWord;
+            inputElement.value = ""
+        } else if (!prevWLetter) {
+            badInputActions(userWordinput);
+            inputElement.value = ""
+        } else if (userFails.length > 3) {
+            //when user loses
+            userLoses();
+            userLosesActions()
+            inputElement.value = ""
+        };
+    })
+    .catch( error => {
+        userFails.push(userWordinput);
+        badPointo.innerText = updatePoint('b');
+        badListo();
         badInputActions(userWordinput);
         inputElement.value = ""
-    } else {
-        //when user loses
-        userLoses();
-        userLosesActions()
-        inputElement.value = ""
-    };
+    });
 });
 
 
